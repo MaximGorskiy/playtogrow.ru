@@ -1,0 +1,42 @@
+name: Publish Play to Grow
+
+on:
+  push:
+    branches: [main, master]
+    paths: ['docs/**', 'tests/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate demo logic
+        run: node --test tests/model.test.mjs
+      - name: Check JavaScript syntax
+        run: |
+          node --check docs/model.js
+          node --check docs/app.js
+          node --check docs/contact-config.js
+          node --check docs/landing.js
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - uses: actions/deploy-pages@v5
+        id: deployment

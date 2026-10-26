@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru" data-default-language="ru" data-ru-url="https://playtogrow.ru/" data-en-url="https://playtogrow.online/" data-demo-url="./demo.html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f37">
+  <meta name="description" content="Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <title>Play to Grow — играй, чтобы расти</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./landing.css">
+  <script type="module" src="./landing.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Перейти к содержимому</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Play to Grow">
+      <img src="./assets/mark.svg" width="44" height="44" alt="">
+      <span>Play to Grow<small data-i18n="slogan">играй, чтобы расти</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria-label="navLabel">
+      <a href="#idea" data-i18n="navIdea">Идея</a>
+      <a href="#participants" data-i18n="navParticipants">Участники</a>
+      <a href="#pilot" data-i18n="navPilot">Пилот</a>
+      <a href="#contact" data-i18n="navContact">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Язык сайта" data-i18n-aria-label="languageLabel">
+        <button type="button" data-language="ru" aria-pressed="true">RU</button>
+        <button type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="button button-small" href="./demo.html#child/day" data-demo-link data-i18n="openDemo">Открыть демо</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroEyebrow">Пилотный проект для семей и психологов</p>
+        <h1 data-i18n="heroTitle">Превращаем интерес к играм в реальные шаги к развитию</h1>
+        <p class="hero-lead" data-i18n="heroLead">Ребенок выбирает полезные задания, получает поддержку взрослых и приближается к согласованным игровым наградам — без стыда, давления и борьбы с его интересами.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact" data-i18n="joinPilot">Стать участником пилота</a>
+          <a class="button button-ghost" href="./demo.html#child/day" data-demo-link data-i18n="viewDemo">Посмотреть демоверсию</a>
+        </div>
+        <p class="hero-note" data-i18n="heroNote">Сейчас мы проверяем идею вместе с первыми семьями. Регистрация и передача данных ребенка на сайте не требуются.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="level-card level-card-one"><span>01</span><b data-i18n="visualQuest">Квест</b></div>
+        <div class="level-card level-card-two"><span>02</span><b data-i18n="visualStep">Шаг</b></div>
+        <div class="level-card level-card-three"><span>03</span><b data-i18n="visualGrowth">Рост</b></div>
+        <div class="hero-mark"><img src="./assets/mark.svg" width="88" height="88" alt=""></div>
+      </div>
+    </section>
+    <section class="section recruitment" id="pilot">
+      <div class="section-heading narrow">
+        <p class="eyebrow" data-i18n="recruitEyebrow">Открыт набор в пилот</p>
+        <h2 data-i18n="recruitTitle">Я ищу пациентов и семьи для работы с компьютерной и игровой зависимостью</h2>
+        <p data-i18n="recruitText">На первом этапе нужны родители с ребенком или подростком, для которого игры стали источником конфликтов, вытесняют учебу, движение, общение или другие важные дела. Мы вместе проверим, помогает ли знакомая игровая мотивация вернуть интерес к развитию в реальной жизни.</p>
+      </div>
+      <div class="recruit-badges" aria-label="Кому подойдет пилот" data-i18n-aria-label="recruitLabel">
+        <span data-i18n="badgeFamily">Семьи с детьми и подростками</span><span data-i18n="badgeVoluntary">Добровольное участие</span><span data-i18n="badgeDialogue">Открытый диалог</span>
+      </div>
+    </section>
+    <section class="section" id="idea">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="howEyebrow">Как работает идея</p>
+        <h2 data-i18n="howTitle">Не отбирать игру, а сделать ее мостом к полезным действиям</h2>
+        <p data-i18n="howIntro">Цели и награды заранее обсуждаются в семье. Ребенок сохраняет выбор, взрослый замечает усилия, а специалист помогает удерживать фокус на развитии.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card"><span class="step-number">01</span><h3 data-i18n="step1Title">Выбираем цель</h3><p data-i18n="step1Text">Учеба, чтение, движение, творчество, общение или самостоятельность — только то, что действительно важно ребенку и семье.</p></article>
+        <article class="step-card featured"><span class="step-number">02</span><h3 data-i18n="step2Title">Проходим квест</h3><p data-i18n="step2Text">Большая задача превращается в понятный и посильный шаг. Ребенок выбирает, выполняет и рассказывает о результате.</p></article>
+        <article class="step-card"><span class="step-number">03</span><h3 data-i18n="step3Title">Отмечаем прогресс</h3><p data-i18n="step3Text">За подтвержденное усилие ребенок получает баллы и согласованную награду: игровое время, бонус или внутриигровую ценность.</p></article>
+      </div>
+    </section>
+    <section class="section role-section" id="participants">
+      <div class="section-heading"><p class="eyebrow" data-i18n="rolesEyebrow">Три участника — одна команда</p><h2 data-i18n="rolesTitle">Что делает каждый участник в системе</h2></div>
+      <div class="roles">
+        <article class="role-card child-card"><span class="role-icon">01</span><h3 data-i18n="childTitle">Ребенок</h3><p data-i18n="childText">Выбирает задание, отправляет результат, получает баллы и запрашивает согласованную игровую награду.</p></article>
+        <article class="role-card parent-card"><span class="role-icon">02</span><h3 data-i18n="parentTitle">Родитель</h3><p data-i18n="parentText">Проверяет отчет, подтверждает начисление баллов, контролирует лимиты и отмечает выдачу награды.</p></article>
+        <article class="role-card moderator-card"><span class="role-icon">03</span><h3 data-i18n="moderatorTitle">Модератор</h3><p data-i18n="moderatorText">Добавляет задания, задает направление развития и отслеживает выполнение и прогресс ребенка.</p></article>
+      </div>
+    </section>
+    <section class="section pilot-grid">
+      <article class="info-panel dark-panel">
+        <p class="eyebrow" data-i18n="stageEyebrow">Честно о стадии проекта</p><h2 data-i18n="stageTitle">Сейчас это пилот, а не готовая медицинская программа</h2>
+        <p data-i18n="stageText">Мы собираем обратную связь, уточняем методику и проверяем сценарии вместе с семьями и психологами. Платформа не ставит диагноз, не заменяет врача или психотерапевта и не обещает гарантированного результата.</p>
+        <a class="text-link" href="./demo.html#child/day" data-demo-link data-i18n="tryDemo">Попробовать прототип →</a>
+      </article>
+      <article class="info-panel finance-panel">
+        <p class="eyebrow" data-i18n="financeEyebrow">Прозрачное финансирование</p><h2 data-i18n="financeTitle">Все средства — только на развитие проекта</h2>
+        <p data-i18n="financeText">На пилотном этапе проект финансируют родители участников. Все поступающие средства направляются на разработку, инфраструктуру и развитие проекта. Автор проекта не получает личной прибыли. Заработок планируется только после ввода платформы в эксплуатацию.</p>
+        <div class="finance-line"><span data-i18n="financeDevelopment">Разработка</span><span data-i18n="financeInfrastructure">Инфраструктура</span><span data-i18n="financeResearch">Развитие методики</span></div>
+      </article>
+    </section>
+    <section class="section specialists">
+      <div><p class="eyebrow" data-i18n="specialistEyebrow">Приглашение специалистам</p><h2 data-i18n="specialistTitle">Ищу психологов для профессионального диалога и совместной работы</h2></div>
+      <p data-i18n="specialistText">Если вы работаете с детьми, подростками, семьями или проблемным игровым поведением, давайте обсудим методику, этические границы и формат пилота. Профессиональная критика здесь так же важна, как поддержка.</p>
+    </section>
+    <section class="section contact-section" id="contact">
+      <div class="contact-copy">
+        <p class="eyebrow" data-i18n="contactEyebrow">Связаться лично</p><h2 data-i18n="contactTitle">Расскажите коротко о вашей ситуации или предложите сотрудничество</h2>
+        <p data-i18n="contactText">Для первого разговора не присылайте диагнозы, документы и другие чувствительные сведения. Достаточно указать, кто вы — родитель или специалист — и удобный способ связи.</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-card" data-contact="telegram" href="#contact"><span class="contact-type">Telegram</span><strong data-contact-value="telegram">@MaksimGorskiy</strong><span aria-hidden="true">↗</span></a>
+        <a class="contact-card" data-contact="email" href="#contact"><span class="contact-type">Email</span><strong data-contact-value="email">31415926x2@gmail.com</strong><span aria-hidden="true">↗</span></a>
+        <a class="contact-card" data-contact="phone" href="#contact"><span class="contact-type" data-i18n="phoneLabel">Телефон</span><strong data-contact-value="phone">+7 920 015-63-12</strong><span aria-hidden="true">↗</span></a>
+        <p class="contact-missing" data-contact-missing data-i18n="contactMissing">Публичные контакты будут добавлены перед публикацией.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="brand footer-brand"><img src="./assets/mark.svg" width="38" height="38" alt=""><span>Play to Grow<small data-i18n="footerSlogan">Play to Grow · Играй, чтобы расти</small></span></div>
+    <p data-i18n="footerNote">Пилотный проект. Сайт не собирает персональные данные и не является медицинской услугой.</p><a href="#top" data-i18n="toTop">Наверх ↑</a>
+  </footer>
+  <noscript>Для переключения языка включите JavaScript. Основная информация о проекте доступна на этой странице.</noscript>
+</body>
+</html>
