@@ -7,7 +7,7 @@ const LANG_KEY = `playtogrow:language:${location.pathname.split('/').filter(Bool
 const app = document.querySelector('#app');
 const dialog = document.querySelector('#dialog');
 const DEFAULT_LANG = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
-const SITE_VERSION = '20261026-1';
+const SITE_VERSION = '20261026-2';
 const REQUESTED_LANG = new URLSearchParams(location.search).get('lang');
 let lang = ['ru', 'en'].includes(REQUESTED_LANG) ? REQUESTED_LANG : localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
 if (!['ru', 'en'].includes(lang)) lang = DEFAULT_LANG;
