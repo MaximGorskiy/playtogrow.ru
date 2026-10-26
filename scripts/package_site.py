@@ -96,16 +96,16 @@ for language, config in variants.items():
     landing_html = landing_html.replace('data-demo-url="./demo.html"', f'data-demo-url="./{config["demo_preview"]}"')
     landing_html = landing_html.replace('href="./assets/mark.svg"', f'href="{mark}"')
     landing_html = landing_html.replace('src="./assets/mark.svg"', f'src="{mark}"')
-    landing_html = landing_html.replace('<link rel="stylesheet" href="./landing.css?v=20261026-2">', '<style>' + (SITE / 'landing.css').read_text(encoding='utf-8') + '</style>')
-    landing_html = landing_html.replace('<script type="module" src="./landing.js?v=20261026-2"></script>', '<script type="module">' + landing_code + '</script>')
+    landing_html = landing_html.replace('<link rel="stylesheet" href="./landing.css?v=20261026-3">', '<style>' + (SITE / 'landing.css').read_text(encoding='utf-8') + '</style>')
+    landing_html = landing_html.replace('<script type="module" src="./landing.js?v=20261026-3"></script>', '<script type="module">' + landing_code + '</script>')
     landing_html = landing_html.replace("script-src 'self'", f"script-src 'sha256-{landing_digest}'")
     preview = OUTPUT / config['preview']
     preview.write_text(landing_html, encoding='utf-8')
 
     demo_html = localized_html(source_demo, language, 'demo')
     demo_html = demo_html.replace('href="./assets/mark.svg"', f'href="{mark}"')
-    demo_html = demo_html.replace('<link rel="stylesheet" href="./styles.css?v=20261026-2">', '<style>' + (SITE / 'styles.css').read_text(encoding='utf-8') + '</style>')
-    demo_html = demo_html.replace('<script type="module" src="./app.js?v=20261026-2"></script>', '<script type="module">' + demo_code + '</script>')
+    demo_html = demo_html.replace('<link rel="stylesheet" href="./styles.css?v=20261026-3">', '<style>' + (SITE / 'styles.css').read_text(encoding='utf-8') + '</style>')
+    demo_html = demo_html.replace('<script type="module" src="./app.js?v=20261026-3"></script>', '<script type="module">' + demo_code + '</script>')
     demo_html = demo_html.replace("script-src 'self'", f"script-src 'sha256-{demo_digest}'")
     demo_preview = OUTPUT / config['demo_preview']
     demo_preview.write_text(demo_html, encoding='utf-8')

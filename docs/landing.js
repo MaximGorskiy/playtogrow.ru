@@ -1,7 +1,7 @@
 import { CONTACTS } from './contact-config.js';
 
 const DEFAULT_LANGUAGE = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
-const SITE_VERSION = '20261026-2';
+const SITE_VERSION = '20261026-3';
 const LANGUAGE_KEY = `playtogrow:language:${location.pathname.split('/').filter(Boolean)[0] || 'root'}`;
 const REQUESTED_LANGUAGE = new URLSearchParams(location.search).get('lang');
 let language = ['ru', 'en'].includes(REQUESTED_LANGUAGE) ? REQUESTED_LANGUAGE : localStorage.getItem(LANGUAGE_KEY) || DEFAULT_LANGUAGE;
