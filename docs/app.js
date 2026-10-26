@@ -7,7 +7,7 @@ const LANG_KEY = `playtogrow:language:${location.pathname.split('/').filter(Bool
 const app = document.querySelector('#app');
 const dialog = document.querySelector('#dialog');
 const DEFAULT_LANG = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
-const SITE_VERSION = '20261026-3';
+const SITE_VERSION = '20261026-4';
 const REQUESTED_LANG = new URLSearchParams(location.search).get('lang');
 let lang = ['ru', 'en'].includes(REQUESTED_LANG) ? REQUESTED_LANG : localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
 if (!['ru', 'en'].includes(lang)) lang = DEFAULT_LANG;
@@ -215,7 +215,7 @@ function render() {
   const name = escape(displayName(state.profile[role]));
   const childName = escape(displayName(state.profile.child));
   app.innerHTML = `<aside class="sidebar">
-    <a class="brand" href="#${role}/day"><img src="./assets/mark.svg" alt="" width="40" height="40"><span>Play to Grow<small>играй, чтобы расти.</small></span></a>
+    <a class="brand" href="./index.html?lang=${lang}&v=${SITE_VERSION}"><img src="./assets/mark.svg" alt="" width="40" height="40"><span>Play to Grow<small>играй, чтобы расти.</small></span></a>
     <div class="family-label">СЕМЕЙНОЕ ПРОСТРАНСТВО</div>
     <div class="family"><span class="avatar small">${childName[0]}</span><span>Команда ${childName}<small>Задания, отчеты и награды</small></span></div>
     <nav aria-label="Основная навигация">${navigation[role].map(([id, ico, label]) => `<a href="#${role}/${id}" class="nav-link ${page === id ? 'selected' : ''}" ${page === id ? 'aria-current="page"' : ''}>${icon(ico)}<span>${label}</span>${id === 'review' && pending ? `<b class="nav-count">${pending}</b>` : ''}</a>`).join('')}</nav>
