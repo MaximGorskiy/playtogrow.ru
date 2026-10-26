@@ -1,6 +1,7 @@
 import { CONTACTS } from './contact-config.js';
 
 const DEFAULT_LANGUAGE = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
+const SITE_VERSION = '20261026-1';
 const LANGUAGE_KEY = `playtogrow:language:${location.pathname.split('/').filter(Boolean)[0] || 'root'}`;
 const REQUESTED_LANGUAGE = new URLSearchParams(location.search).get('lang');
 let language = ['ru', 'en'].includes(REQUESTED_LANGUAGE) ? REQUESTED_LANGUAGE : localStorage.getItem(LANGUAGE_KEY) || DEFAULT_LANGUAGE;
@@ -65,7 +66,7 @@ function applyLanguage(nextLanguage) {
   });
   document.querySelectorAll('[data-language]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
   const demoUrl = document.documentElement.dataset.demoUrl || './demo.html';
-  document.querySelectorAll('[data-demo-link]').forEach((link) => link.setAttribute('href', `${demoUrl}?lang=${language}#child/day`));
+  document.querySelectorAll('[data-demo-link]').forEach((link) => link.setAttribute('href', `${demoUrl}?lang=${language}&v=${SITE_VERSION}#child/day`));
   document.title = language === 'en' ? 'Play to Grow — turn play into growth' : 'Play to Grow — играй, чтобы расти';
   renderContacts();
 }
