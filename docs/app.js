@@ -7,9 +7,8 @@ const LANG_KEY = `playtogrow:language:${location.pathname.split('/').filter(Bool
 const app = document.querySelector('#app');
 const dialog = document.querySelector('#dialog');
 const DEFAULT_LANG = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
-const PUBLIC_HOSTS = new Set(['playtogrow.ru', 'www.playtogrow.ru', 'playtogrow.online', 'www.playtogrow.online']);
 const REQUESTED_LANG = new URLSearchParams(location.search).get('lang');
-let lang = ['ru', 'en'].includes(REQUESTED_LANG) ? REQUESTED_LANG : PUBLIC_HOSTS.has(location.hostname) ? DEFAULT_LANG : localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+let lang = ['ru', 'en'].includes(REQUESTED_LANG) ? REQUESTED_LANG : localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
 if (!['ru', 'en'].includes(lang)) lang = DEFAULT_LANG;
 localStorage.setItem(LANG_KEY, lang);
 const englishDemo = createDemo();
@@ -218,7 +217,7 @@ function render() {
     <nav aria-label="Основная навигация">${navigation[role].map(([id, ico, label]) => `<a href="#${role}/${id}" class="nav-link ${page === id ? 'selected' : ''}" ${page === id ? 'aria-current="page"' : ''}>${icon(ico)}<span>${label}</span>${id === 'review' && pending ? `<b class="nav-count">${pending}</b>` : ''}</a>`).join('')}</nav>
     <div class="sidebar-bottom"><div class="gentle-note">${icon('leaf')}<strong>Как получить награду</strong><p>Выбери задание, отправь отчет<br>и накопи баллы.</p></div>${button(`${icon('shield')} О демоверсии`, 'about', '', 'about-link')}<div class="sidebar-foot">Play to Grow · 2026</div></div>
   </aside>
-  <div class="workspace"><header class="topbar"><div class="breadcrumb">Мое пространство<span>/</span><b>${navigation[role].find(([id]) => id === page)?.[2]}</b></div><div class="topbar-right"><span class="demo-dot">Демо</span><div class="language-switch" aria-label="${L('Язык интерфейса', 'Interface language')}"><button type="button" data-action="language" data-id="ru" aria-pressed="${lang === 'ru'}">RU</button><button type="button" data-action="language" data-id="en" aria-pressed="${lang === 'en'}">EN</button></div><label class="role-select"><span class="sr-only">Роль участника</span><select id="role-select">${Object.keys(ROLES).map(id => `<option value="${id}" ${role === id ? 'selected' : ''}>${roleName(id)}</option>`).join('')}</select></label><span class="avatar ${role}">${name.slice(0, 1)}</span></div></header>
+  <div class="workspace"><header class="topbar"><div class="breadcrumb"><a href="./index.html?lang=${lang}">${L('Стартовая', 'Home')}</a><span>/</span><span>Мое пространство</span><span>/</span><b>${navigation[role].find(([id]) => id === page)?.[2]}</b></div><div class="topbar-right"><span class="demo-dot">Демо</span><div class="language-switch" aria-label="${L('Язык интерфейса', 'Interface language')}"><button type="button" data-action="language" data-id="ru" aria-pressed="${lang === 'ru'}">RU</button><button type="button" data-action="language" data-id="en" aria-pressed="${lang === 'en'}">EN</button></div><label class="role-select"><span class="sr-only">Роль участника</span><select id="role-select">${Object.keys(ROLES).map(id => `<option value="${id}" ${role === id ? 'selected' : ''}>${roleName(id)}</option>`).join('')}</select></label><span class="avatar ${role}">${name.slice(0, 1)}</span></div></header>
   <div class="demo-banner"><span>${icon('people')} Три роли, один браузер. Все данные — учебные и сохраняются на этом устройстве.</span>${button('Как попробовать', 'about', '', 'text-btn')}</div>
   ${storageError ? `<div class="error-banner" role="alert">${escape(storageError)} ${button('Восстановить', 'about', '', 'text-btn')}</div>` : ''}
   <main id="main" tabindex="-1">${page === 'day' ? dashboard(active, xp, level) : page === 'rewards' ? rewardsPage() : page === 'review' ? reviewPage() : page === 'progress' ? progressPage() : page === 'settings' ? settingsPage() : page === 'library' ? libraryPage() : page === 'concept' ? conceptPage() : teamPage()}</main>
@@ -371,12 +370,9 @@ document.addEventListener('click', async event => {
   if (action === 'close') { dialog.close(); return; }
   if (action === 'language') {
     const nextLang = id === 'en' ? 'en' : 'ru';
-    if (PUBLIC_HOSTS.has(location.hostname) && nextLang !== DEFAULT_LANG) {
-      const target = new URL(document.documentElement.dataset[`${nextLang}Url`]);
-      target.hash = location.hash;
-      location.assign(target); return;
-    }
-    lang = nextLang; localStorage.setItem(LANG_KEY, lang); if (dialog.open) dialog.close(); render(); return;
+    lang = nextLang; localStorage.setItem(LANG_KEY, lang);
+    const url = new URL(location.href); url.searchParams.set('lang', lang); history.replaceState(null, '', url);
+    if (dialog.open) dialog.close(); render(); return;
   }
   if (action === 'filter') { filter = id; const y = scrollY; render(); window.scrollTo(0, y); app.querySelector(`[data-action="filter"][data-id="${id}"]`)?.focus({ preventScroll: true }); return; }
   if (action === 'scroll-quests') { document.querySelector('#quests')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }); return; }
