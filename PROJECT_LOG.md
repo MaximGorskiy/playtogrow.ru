@@ -38,6 +38,7 @@
 - Для `playtogrow.ru` языком по умолчанию назначен русский.
 - Для `playtogrow.online` языком по умолчанию назначен английский.
 - Публикация выполняется через GitHub Actions из каталога `docs/`.
+- Первый запуск workflow подтвердил, что в новых пустых репозиториях GitHub Pages еще не включен. В `actions/configure-pages` добавлен параметр `enablement: true`, чтобы workflow самостоятельно включал Pages с источником GitHub Actions.
 
 ## Текущие ограничения
 
