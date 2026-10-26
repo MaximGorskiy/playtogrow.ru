@@ -38,7 +38,13 @@
 - Для `playtogrow.ru` языком по умолчанию назначен русский.
 - Для `playtogrow.online` языком по умолчанию назначен английский.
 - Публикация выполняется через GitHub Actions из каталога `docs/`.
-- Первый запуск workflow подтвердил, что в новых пустых репозиториях GitHub Pages еще не включен. В `actions/configure-pages` добавлен параметр `enablement: true`, чтобы workflow самостоятельно включал Pages с источником GitHub Actions.
+- Первый запуск workflow подтвердил, что в новых пустых репозиториях GitHub Pages еще не включен. В `actions/configure-pages` добавлен параметр `enablement: true`.
+- GitHub не разрешил `GITHUB_TOKEN` впервые создать Pages-сайт (`Resource not accessible by integration`), поэтому Pages был включен через GitHub REST API с авторизацией владельца. Для `playtogrow.online` прежний режим `legacy` заменен на `workflow`.
+- Повторные запуски GitHub Actions завершились успешно:
+  - русская версия: `https://maximgorskiy.github.io/playtogrow.ru/`;
+  - английская версия: `https://playtogrow.online/`.
+- Для `playtogrow.online` включено обязательное HTTPS-соединение.
+- Домен `playtogrow.ru` пока отвечает страницей регистратора и не привязан к GitHub Pages. После обновления DNS его можно будет подключить без изменения исходного кода.
 
 ## Текущие ограничения
 
