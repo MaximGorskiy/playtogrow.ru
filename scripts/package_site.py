@@ -32,14 +32,14 @@ variants = {
         'archive': 'playtogrow-en-github-pages.zip',
         'preview': 'Play to Grow — EN.html',
         'demo_preview': 'Play to Grow — EN Demo.html',
-        'html_lang': 'en',
-        'title': 'Play to Grow — turn play into growth',
-        'description': 'Play to Grow is a pilot for families affected by computer or gaming addiction, turning gaming motivation into real-world steps toward growth.',
-        'demo_title': 'Play to Grow — demo',
-        'demo_description': 'Explore Play to Grow: three roles, growth quests, progress, and agreed gaming rewards.',
-        'skip': 'Skip to content',
-        'landing_noscript': 'Enable JavaScript to switch languages. The main project information is available on this page.',
-        'demo_noscript': 'Enable JavaScript to use Play to Grow. Demo data is stored only on this device.',
+        'html_lang': 'ru',
+        'title': 'Play to Grow — играй, чтобы расти',
+        'description': 'Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.',
+        'demo_title': 'Play to Grow — демоверсия',
+        'demo_description': 'Демонстрация Play to Grow: три роли, развивающие задания, прогресс и согласованные игровые награды.',
+        'skip': 'Перейти к содержимому',
+        'landing_noscript': 'Для переключения языка включите JavaScript. Основная информация о проекте доступна на этой странице.',
+        'demo_noscript': 'Для работы Play to Grow включите JavaScript в браузере. Данные демоверсии хранятся только на этом устройстве.',
     },
 }
 
@@ -50,7 +50,7 @@ def localized_html(source, language, page):
     config = variants[language]
     html = source.replace(
         '<html lang="ru" data-default-language="ru"',
-        f'<html lang="{config["html_lang"]}" data-default-language="{language}"',
+        f'<html lang="{config["html_lang"]}" data-default-language="{config["html_lang"]}"',
     )
     title = config['title'] if page == 'landing' else config['demo_title']
     description = config['description'] if page == 'landing' else config['demo_description']
@@ -112,11 +112,11 @@ for language, config in variants.items():
 
     assert './landing.js' not in landing_html and './contact-config.js' not in landing_html
     assert './app.js' not in demo_html and './model.js' not in demo_html
-    assert f'data-default-language="{language}"' in landing_html
+    assert f'data-default-language="{config["html_lang"]}"' in landing_html
     with ZipFile(OUTPUT / config['archive']) as archive:
         assert archive.testzip() is None
-        assert f'data-default-language="{language}"' in archive.read('docs/index.html').decode()
-        assert f'data-default-language="{language}"' in archive.read('docs/demo.html').decode()
+        assert f'data-default-language="{config["html_lang"]}"' in archive.read('docs/index.html').decode()
+        assert f'data-default-language="{config["html_lang"]}"' in archive.read('docs/demo.html').decode()
         assert all(name.startswith(('docs/', 'tests/', '.github/', 'scripts/')) or name in ['README.md', 'PROJECT_LOG.md', 'start-preview.cmd'] for name in archive.namelist())
     print(f'Created {language.upper()} offline landing ({preview.stat().st_size:,} bytes)')
     print(f'Created {language.upper()} offline demo ({demo_preview.stat().st_size:,} bytes)')
