@@ -12,9 +12,9 @@ Play to Grow is not a diagnostic or medical service and does not promise treatme
 ## Project information
 
 - [About Play to Grow](https://playtogrow.online/en/about/): The purpose of Play to Grow, its three participant roles, and an honest description of the pilot's current stage.
-- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): The quest cycle: child choice, report, parent review, points, a gaming reward, and progress analysis with a psychologist.
+- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): Two connected cycles: real-life quests and a visible in-game progress plan with result review and psychologist input.
 - [Play to Grow for parents](https://playtogrow.online/en/for-parents/): The parent's role in Play to Grow, how to agree on quests and gaming rewards, and when professional advice may be needed.
-- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, show the result, earn points, and request agreed gaming bonuses.
+- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, log in-game achievements, earn points, and request agreed bonuses.
 - [Play to Grow for psychologists](https://playtogrow.online/en/for-psychologists/): The psychologist's role in the Play to Grow pilot: professional quest selection, progress review, ethical boundaries, and collaboration.
 - [Joining the Play to Grow pilot](https://playtogrow.online/en/pilot/): Who the pilot is looking for, how first contact works, what parent funding supports, and which outcomes are not guaranteed.
 - [Play to Grow method and sources](https://playtogrow.online/en/methodology/): The working hypothesis, principles, observation criteria, and official sources on problematic gaming behavior.

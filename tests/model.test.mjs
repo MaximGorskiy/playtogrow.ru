@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { CATEGORIES, createDemo, transition, balance, earned, validateState, limitsUsed, dayKey, rewardAvailability } from '../docs/model.js';
+import { CATEGORIES, createDemo, transition, balance, earned, validateState, rewardUsage, gameProgressSummary, dayKey, rewardAvailability } from '../docs/model.js';
 
 const now = new Date('2026-10-26T09:00:00Z');
 const demo = () => createDemo(now);
 const run = (s, role, action, data, date = now) => validateState(transition(s, role, action, data, date));
-const request = (s, id, rewardId = 'time', date = now) => run(s, 'child', 'requestReward', { id, rewardId }, date);
+const request = (s, id, rewardId = 'progress', date = now) => run(s, 'child', 'requestReward', { id, rewardId }, date);
 
 test('demo starts with an auditable 150 points, three completed quests', () => {
   const s = validateState(demo());
@@ -16,9 +16,11 @@ test('demo starts with an auditable 150 points, three completed quests', () => {
 test('demo content is bilingual while older backups remain valid', () => {
   const s = demo();
   assert.ok(s.profile.goalEn);
+  assert.ok(s.profile.gameGoalEn && s.profile.suggestedGamesEn);
   assert.ok(Object.values(CATEGORIES).every(category => category.labelEn));
   assert.ok(s.tasks.every(task => task.titleEn && task.descriptionEn));
   assert.ok(s.rewards.every(reward => reward.titleEn && reward.descriptionEn));
+  assert.ok(s.gameProgress.every(item => item.titleEn && item.reportEn));
   const legacy = structuredClone(s);
   delete legacy.profile.goalEn;
   for (const item of [...legacy.tasks, ...legacy.rewards]) { delete item.titleEn; delete item.descriptionEn; delete item.reportEn; }
@@ -81,17 +83,13 @@ test('insufficient balance, unknown records and invalid action are rejected', ()
   assert.match(rewardAvailability(demo(), demo().rewards[2], now), /Еще 50/);
 });
 
-test('daily limit includes pending reservations and uses the issue date', () => {
-  let s = demo(); s.profile.dailyMinutes = 30;
+test('play time is observed but does not block rewards or award points by itself', () => {
+  let s = run(demo(), 'child', 'logGameProgress', { id: 'g2', title: 'Прошел легкий этап', minutes: 180, report: 'Прошел этап и отметил две новые стратегии.' });
+  assert.equal(gameProgressSummary(s, now).minutes, 255);
+  assert.equal(balance(s), 150);
   s = request(s, 'c1');
-  assert.throws(() => request(s, 'c2'), /дневной лимит/);
-  const tomorrow = new Date('2026-10-27T09:00:00Z');
-  assert.throws(() => request(s, 'c2', 'time', tomorrow), /дневной лимит/);
-  s = run(s, 'parent', 'deliverReward', { id: 'c1' }, tomorrow);
-  assert.equal(limitsUsed(s, tomorrow).minutes, 30);
-  const next = new Date('2026-10-28T09:00:00Z');
-  assert.equal(limitsUsed(s, next).minutes, 0);
-  assert.equal(balance(request(s, 'c2', 'time', next)), 30);
+  s = request(s, 'c2');
+  assert.equal(balance(s), 30);
 });
 
 test('Moscow midnight and Monday budget reset are consistent', () => {
@@ -99,21 +97,34 @@ test('Moscow midnight and Monday budget reset are consistent', () => {
   let s = demo(); s.profile.weeklyBudget = 150;
   const sunday = new Date('2026-10-25T12:00:00Z');
   s = request(s, 'c1', 'bonus', sunday);
-  assert.equal(limitsUsed(s, now).rubles, 150);
+  assert.equal(rewardUsage(s, now).rubles, 150);
   s = run(s, 'parent', 'deliverReward', { id: 'c1' }, sunday);
-  assert.equal(limitsUsed(s, sunday).rubles, 150);
-  assert.equal(limitsUsed(s, now).rubles, 0);
+  assert.equal(rewardUsage(s, sunday).rubles, 150);
+  assert.equal(rewardUsage(s, now).rubles, 0);
 });
 
-test('budget checks and settings cannot undercut existing reservations', () => {
+test('budget checks cannot undercut existing reservations', () => {
   let s = demo(); s.profile.weeklyBudget = 100;
   assert.throws(() => request(s, 'c1', 'bonus'), /бюджет/);
-  s = request(demo(), 'c1');
-  assert.throws(() => run(s, 'parent', 'saveRules', { child: 'Саша', game: 'Minecraft', dailyMinutes: 10, weeklyBudget: 500 }), /меньше/);
+  s = request(demo(), 'c1', 'bonus');
+  assert.throws(() => run(s, 'parent', 'saveRules', { child: 'Саша', game: 'Minecraft', weeklyBudget: 100 }), /меньше/);
   s = run(s, 'parent', 'cancelReward', { id: 'c1' });
-  s = run(s, 'parent', 'saveRules', { child: 'Алекс', game: 'Любимая игра', dailyMinutes: 0, weeklyBudget: 0 });
+  s = run(s, 'parent', 'saveRules', { child: 'Алекс', game: 'Любимая игра', weeklyBudget: 0 });
   assert.equal(s.profile.child, 'Алекс');
-  assert.throws(() => request(s, 'c2'), /дневной/);
+  assert.equal(s.profile.weeklyBudget, 0);
+});
+
+test('approved in-game achievement awards points and the moderator controls the visible plan', () => {
+  let s = demo();
+  assert.equal(gameProgressSummary(s, now).approved, 0);
+  s = run(s, 'moderator', 'reviewGameProgress', { id: 'game-1', decision: 'approve', feedback: 'Хорошая стратегия.' });
+  assert.equal(balance(s), 170);
+  assert.equal(gameProgressSummary(s, now).approved, 1);
+  assert.throws(() => run(s, 'parent', 'reviewGameProgress', { id: 'game-1', decision: 'approve' }), /уже проверено/);
+  s = run(s, 'moderator', 'saveGamePlan', { gameGoal: 'Пройти три выбранных игровых этапа', gameGoalEn: 'Complete three selected game stages', weeklyGameTarget: 4, gameWinPoints: 25, suggestedGames: 'Portal 2 — первый уровень', suggestedGamesEn: 'Portal 2 — first level' });
+  assert.equal(s.profile.weeklyGameTarget, 4);
+  assert.equal(s.profile.gameWinPoints, 25);
+  assert.throws(() => run(s, 'child', 'saveGamePlan', { gameGoal: 'Новая игровая цель', weeklyGameTarget: 1, gameWinPoints: 20 }), /модератор/);
 });
 
 test('moderator creates a valid quest and child completes the full cycle', () => {
@@ -138,8 +149,8 @@ test('import validates structure, dates, duplicate IDs, enums and balances', () 
     s => s.tasks[0].status = 'constructor',
     s => s.tasks.push(s.tasks[0]),
     s => s.tasks[0].createdAt = 'bad date',
-    s => s.profile.dailyMinutes = 1000,
-    s => s.rewards[0].minutes = 0,
+    s => s.profile.weeklyGameTarget = 1000,
+    s => s.gameProgress[0].minutes = 0,
     s => s.tasks = null,
   ];
   for (const corrupt of corruptions) { const s = demo(); corrupt(s); assert.throws(() => validateState(s)); }

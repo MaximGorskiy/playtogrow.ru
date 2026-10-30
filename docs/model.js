@@ -17,7 +17,14 @@ export function createDemo(now = new Date()) {
   const task = (id, title, titleEn, category, points, minutes, description, descriptionEn, status = 'available', extra = {}) => ({ id, title, titleEn, category, points, minutes, description, descriptionEn, status, report: '', feedback: '', createdAt: stamp, ...extra });
   return {
     version: 1, revision: 0,
-    profile: { child: 'Саша', parent: 'Анна', moderator: 'Мария', game: 'Minecraft', goal: 'Больше движения и самостоятельности', goalEn: 'More movement and independence', focus: 'sport', dailyMinutes: 60, weeklyBudget: 500 },
+    profile: {
+      child: 'Саша', parent: 'Анна', moderator: 'Мария', game: 'Minecraft',
+      goal: 'Больше движения и самостоятельности', goalEn: 'More movement and independence', focus: 'sport', weeklyBudget: 500,
+      gameGoal: 'Построить безопасную базу и завершить три выбранных игровых этапа', gameGoalEn: 'Build a safe base and complete three selected game stages',
+      weeklyGameTarget: 3, gameWinPoints: 20,
+      suggestedGames: 'Minecraft Dungeons — обучающий этап; Portal 2 — первый совместный уровень',
+      suggestedGamesEn: 'Minecraft Dungeons — tutorial stage; Portal 2 — first co-op level',
+    },
     tasks: [
       task('walk', 'Маленькое путешествие', 'A Little Expedition', 'sport', 40, 20, 'Выйди на прогулку и найди три интересные детали вокруг. Расскажи о них дома. Маршрут заранее согласуй с родителем.', 'Take a walk and spot three interesting details around you. Tell your family about them. Agree on the route with your parent first.'),
       task('read', 'Еще одна глава', 'One More Chapter', 'reading', 30, 15, 'Выбери книгу, прочитай одну главу или несколько страниц. Расскажи, что удивило и какой герой запомнился.', 'Choose a book and read one chapter or a few pages. Share what surprised you and which character stayed with you.', 'active'),
@@ -29,28 +36,41 @@ export function createDemo(now = new Date()) {
       task('done3', 'Разминка исследователя', "Explorer's Warm-up", 'sport', 50, 15, 'Выбери знакомую разминку и выполни ее в удобном темпе.', 'Choose a warm-up you know and complete it at a comfortable pace.', 'done', { report: 'Сделали разминку вместе с мамой.', reportEn: 'Mom and I did the warm-up together.', reviewedAt: ago(3), reviewer: 'parent' }),
     ],
     rewards: [
-      { id: 'time', title: '30 минут в любимой игре', titleEn: '30 Minutes in Your Favorite Game', description: 'Выбери удобное время вместе с родителем. В пределах семейного лимита.', descriptionEn: 'Choose a convenient time together with your parent, within your family limit.', kind: 'time', cost: 60, minutes: 30, rubles: 0 },
+      { id: 'progress', title: 'Бонус за игровой прогресс', titleEn: 'Game Progress Bonus', description: 'Согласованный бонус за подтвержденное игровое достижение или победу.', descriptionEn: 'An agreed bonus for a confirmed in-game achievement or win.', kind: 'bonus', cost: 60, minutes: 0, rubles: 0 },
       { id: 'bonus', title: 'Бонус для твоего мира', titleEn: 'A Bonus for Your Game World', description: 'Согласованный игровой предмет или дополнение. Родитель помогает получить его официальным способом.', descriptionEn: 'An agreed game item or add-on. Your parent helps you get it through an official channel.', kind: 'bonus', cost: 120, minutes: 0, rubles: 150 },
       { id: 'currency', title: 'Копилка игровой валюты', titleEn: 'Game Currency Fund', description: 'Пакет валюты для выбранной игры стоимостью до 300 ₽. Только после согласования с родителем.', descriptionEn: 'A currency pack for the selected game worth up to ₽300, after agreement with a parent.', kind: 'currency', cost: 200, minutes: 0, rubles: 300 },
       { id: 'together', title: 'Приключение вместе', titleEn: 'An Adventure Together', description: 'Совместная прогулка, настольная игра или другое занятие на твой выбор.', descriptionEn: 'A walk, board game, or another shared activity of your choice.', kind: 'together', cost: 80, minutes: 0, rubles: 0 },
     ],
+    gameProgress: [
+      { id: 'game-1', title: 'Построил безопасную базу', titleEn: 'Built a safe base', minutes: 75, report: 'Выбрал место, собрал ресурсы и закончил защитную стену.', reportEn: 'I chose a location, gathered resources, and finished the defensive wall.', status: 'review', feedback: '', points: 0, submittedAt: stamp },
+    ],
     claims: [],
   };
 }
-export function earned(state) { return state.tasks.filter(t => t.status === 'done').reduce((sum, t) => sum + t.points, 0); }
+export function earned(state) {
+  const questPoints = state.tasks.filter(t => t.status === 'done').reduce((sum, t) => sum + t.points, 0);
+  const gamePoints = (state.gameProgress || []).filter(item => item.status === 'approved').reduce((sum, item) => sum + item.points, 0);
+  return questPoints + gamePoints;
+}
 export function balance(state) { return earned(state) - state.claims.filter(c => c.status !== 'cancelled').reduce((sum, c) => sum + c.cost, 0); }
 function weekStart(date) {
   const d = new Date(dayKey(date) + 'T00:00:00Z');
   d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7);
   return d.toISOString().slice(0, 10);
 }
-export function limitsUsed(state, now = new Date(), exclude = '') {
+export function rewardUsage(state, now = new Date(), exclude = '') {
   const claims = state.claims.filter(c => c.status !== 'cancelled' && c.id !== exclude);
-  // Pending requests reserve the allowance until issued or cancelled.
-  const counted = c => c.status === 'requested' || dayKey(c.deliveredAt) === dayKey(now);
   return {
-    minutes: claims.filter(counted).reduce((sum, c) => sum + c.minutes, 0),
     rubles: claims.filter(c => c.status === 'requested' || (dayKey(c.deliveredAt) >= weekStart(now) && dayKey(c.deliveredAt) <= dayKey(now))).reduce((sum, c) => sum + c.rubles, 0),
+  };
+}
+export function gameProgressSummary(state, now = new Date()) {
+  const start = weekStart(now), end = dayKey(now);
+  const entries = (state.gameProgress || []).filter(item => dayKey(item.submittedAt) >= start && dayKey(item.submittedAt) <= end);
+  return {
+    minutes: entries.reduce((sum, item) => sum + item.minutes, 0),
+    submitted: entries.length,
+    approved: entries.filter(item => item.status === 'approved').length,
   };
 }
 function check(condition, message) { if (!condition) throw new Error(message); }
@@ -63,8 +83,7 @@ function integer(value, min, max, label) {
   return value;
 }
 function allowance(state, reward, now, exclude = '') {
-  const used = limitsUsed(state, now, exclude);
-  check(used.minutes + reward.minutes <= state.profile.dailyMinutes, 'Достигнут дневной лимит игрового времени. Обсуди с родителем другой день.');
+  const used = rewardUsage(state, now, exclude);
   check(used.rubles + reward.rubles <= state.profile.weeklyBudget, 'Эта награда выходит за недельный бюджет семьи.');
 }
 export function rewardAvailability(state, reward, now = new Date()) {
@@ -101,6 +120,29 @@ export function transition(state, role, action, payload = {}, now = new Date()) 
       t.feedback = textValue(payload.feedback || '', payload.decision === 'revise' ? 5 : 0, 600, 'Комментарий');
       t.status = payload.decision === 'approve' ? 'done' : 'revision'; t.reviewedAt = stamp; t.reviewer = role; break;
     }
+    case 'logGameProgress': {
+      child(); check(next.gameProgress.length < 1000, 'Достигнут предел демоверсии: 1000 записей игрового прогресса.');
+      const id = textValue(payload.id, 1, 100, 'Идентификатор');
+      check(!next.gameProgress.some(item => item.id === id), 'Запись игрового прогресса уже добавлена.');
+      next.gameProgress.unshift({
+        id,
+        title: textValue(payload.title, 3, 100, 'Игровое достижение'),
+        titleEn: textValue(payload.titleEn || '', 0, 100, 'English achievement'),
+        minutes: integer(payload.minutes, 1, 1440, 'Время наблюдения'),
+        report: textValue(payload.report, 5, 1500, 'Описание результата'),
+        reportEn: textValue(payload.reportEn || '', 0, 1500, 'English report'),
+        status: 'review', feedback: '', points: 0, submittedAt: stamp,
+      }); break;
+    }
+    case 'reviewGameProgress': {
+      adult(); const item = find(next.gameProgress, payload.id);
+      check(item.status === 'review', 'Игровое достижение уже проверено или возвращено на уточнение.');
+      check(['approve', 'revise'].includes(payload.decision), 'Выбери результат проверки.');
+      item.feedback = textValue(payload.feedback || '', payload.decision === 'revise' ? 5 : 0, 600, 'Комментарий');
+      item.status = payload.decision === 'approve' ? 'approved' : 'revision';
+      item.points = payload.decision === 'approve' ? next.profile.gameWinPoints : 0;
+      item.reviewedAt = stamp; item.reviewer = role; break;
+    }
     case 'createTask': {
       adult(); check(next.tasks.length < 500, 'Достигнут лимит демоверсии: 500 заданий.');
       check(Object.hasOwn(CATEGORIES, payload.category), 'Выбери направление.');
@@ -127,16 +169,26 @@ export function transition(state, role, action, payload = {}, now = new Date()) 
       c.status = 'cancelled'; c.cancelledAt = stamp; break;
     }
     case 'saveRules': {
-      parent(); const used = limitsUsed(next, now);
-      const dailyMinutes = integer(payload.dailyMinutes, 0, 180, 'Дневной лимит');
+      parent(); const used = rewardUsage(next, now);
       const weeklyBudget = integer(payload.weeklyBudget, 0, 10000, 'Недельный бюджет');
-      check(dailyMinutes >= used.minutes && weeklyBudget >= used.rubles, 'Лимит меньше уже выданных или ожидающих наград. Сначала отмените ожидающие заявки.');
-      Object.assign(next.profile, { child: textValue(payload.child, 1, 30, 'Имя ребенка'), game: textValue(payload.game, 1, 60, 'Игра'), dailyMinutes, weeklyBudget }); break;
+      check(weeklyBudget >= used.rubles, 'Бюджет меньше уже выданных или ожидающих наград. Сначала отмените ожидающие заявки.');
+      Object.assign(next.profile, { child: textValue(payload.child, 1, 30, 'Имя ребенка'), game: textValue(payload.game, 1, 60, 'Игра'), weeklyBudget }); break;
     }
     case 'saveGoal': {
       check(role === 'moderator', 'План меняет модератор.');
       check(Object.hasOwn(CATEGORIES, payload.focus), 'Выбери направление.');
       next.profile.goal = textValue(payload.goal, 5, 180, 'Цель'); next.profile.goalEn = textValue(payload.goalEn || '', 0, 180, 'English goal'); next.profile.focus = payload.focus; break;
+    }
+    case 'saveGamePlan': {
+      check(role === 'moderator', 'Игровой план меняет модератор.');
+      Object.assign(next.profile, {
+        gameGoal: textValue(payload.gameGoal, 5, 240, 'Игровая цель'),
+        gameGoalEn: textValue(payload.gameGoalEn || '', 0, 240, 'English game goal'),
+        weeklyGameTarget: integer(payload.weeklyGameTarget, 0, 30, 'Игровые этапы за неделю'),
+        gameWinPoints: integer(payload.gameWinPoints, 5, 200, 'Баллы за игровое достижение'),
+        suggestedGames: textValue(payload.suggestedGames || '', 0, 600, 'Смежные игры'),
+        suggestedGamesEn: textValue(payload.suggestedGamesEn || '', 0, 600, 'English suggested games'),
+      }); break;
     }
     default: throw new Error('Неизвестное действие.');
   }
@@ -151,7 +203,13 @@ export function validateState(s) {
   for (const k of ['child', 'parent', 'moderator']) textValue(s.profile[k], 1, 30, 'Имя');
   textValue(s.profile.game, 1, 60, 'Игра'); textValue(s.profile.goal, 5, 180, 'Цель'); textValue(s.profile.goalEn || '', 0, 180, 'English goal');
   check(Object.hasOwn(CATEGORIES, s.profile.focus), 'Неизвестное направление.');
-  integer(s.profile.dailyMinutes, 0, 180, 'Лимит'); integer(s.profile.weeklyBudget, 0, 10000, 'Бюджет');
+  integer(s.profile.weeklyBudget, 0, 10000, 'Бюджет');
+  if (s.profile.dailyMinutes !== undefined) integer(s.profile.dailyMinutes, 0, 1440, 'Устаревшее значение времени');
+  if (s.profile.gameGoal !== undefined) {
+    textValue(s.profile.gameGoal, 5, 240, 'Игровая цель'); textValue(s.profile.gameGoalEn || '', 0, 240, 'English game goal');
+    integer(s.profile.weeklyGameTarget, 0, 30, 'Игровые этапы'); integer(s.profile.gameWinPoints, 5, 200, 'Баллы за игровое достижение');
+    textValue(s.profile.suggestedGames || '', 0, 600, 'Смежные игры'); textValue(s.profile.suggestedGamesEn || '', 0, 600, 'English suggested games');
+  }
   const validDate = d => check(typeof d === 'string' && /^\d{4}-\d\d-\d\dT/.test(d) && Number.isFinite(Date.parse(d)), 'Некорректная дата.');
   for (const list of [s.tasks, s.rewards, s.claims]) {
     check(new Set(list.map(x => x.id)).size === list.length, 'Повторяющиеся записи.');
@@ -177,6 +235,16 @@ export function validateState(s) {
     check(['requested', 'delivered', 'cancelled'].includes(c.status), 'Неизвестный статус заявки.'); validDate(c.requestedAt);
     if (c.status === 'delivered') validDate(c.deliveredAt);
     if (c.status === 'cancelled') validDate(c.cancelledAt);
+  }
+  if (s.gameProgress !== undefined) {
+    check(Array.isArray(s.gameProgress) && s.gameProgress.length <= 1000, 'История игрового прогресса повреждена.');
+    check(new Set(s.gameProgress.map(item => item.id)).size === s.gameProgress.length, 'Повторяющиеся записи игрового прогресса.');
+    for (const item of s.gameProgress) {
+      textValue(item.id, 1, 100, 'Идентификатор'); textValue(item.title, 3, 100, 'Игровое достижение'); textValue(item.titleEn || '', 0, 100, 'English achievement');
+      integer(item.minutes, 1, 1440, 'Время наблюдения'); textValue(item.report, 5, 1500, 'Описание результата'); textValue(item.reportEn || '', 0, 1500, 'English report');
+      check(['review', 'approved', 'revision'].includes(item.status), 'Некорректный игровой прогресс.'); textValue(item.feedback || '', 0, 600, 'Комментарий'); integer(item.points || 0, 0, 200, 'Баллы'); validDate(item.submittedAt);
+      if (['approved', 'revision'].includes(item.status)) { validDate(item.reviewedAt); check(['parent', 'moderator'].includes(item.reviewer), 'Некорректная проверка игрового прогресса.'); }
+    }
   }
   check(balance(s) >= 0, 'Баланс не может быть отрицательным.');
   return s;

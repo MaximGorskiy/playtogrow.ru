@@ -12,9 +12,9 @@ Play to Grow is not a diagnostic or medical service and does not promise treatme
 ## Project information
 
 - [About Play to Grow](https://playtogrow.online/en/about/): The purpose of Play to Grow, its three participant roles, and an honest description of the pilot's current stage.
-- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): The quest cycle: child choice, report, parent review, points, a gaming reward, and progress analysis with a psychologist.
+- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): Two connected cycles: real-life quests and a visible in-game progress plan with result review and psychologist input.
 - [Play to Grow for parents](https://playtogrow.online/en/for-parents/): The parent's role in Play to Grow, how to agree on quests and gaming rewards, and when professional advice may be needed.
-- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, show the result, earn points, and request agreed gaming bonuses.
+- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, log in-game achievements, earn points, and request agreed bonuses.
 - [Play to Grow for psychologists](https://playtogrow.online/en/for-psychologists/): The psychologist's role in the Play to Grow pilot: professional quest selection, progress review, ethical boundaries, and collaboration.
 - [Joining the Play to Grow pilot](https://playtogrow.online/en/pilot/): Who the pilot is looking for, how first contact works, what parent funding supports, and which outcomes are not guaranteed.
 - [Play to Grow method and sources](https://playtogrow.online/en/methodology/): The working hypothesis, principles, observation criteria, and official sources on problematic gaming behavior.
@@ -37,19 +37,19 @@ Last updated: 2026-10-30
 
 Canonical URL: https://playtogrow.ru/about/
 
-Play to Grow связывает выбранные ребенком полезные действия в реальной жизни с игровыми наградами, которые семья согласовала заранее.
+Play to Grow связывает выбранные ребенком полезные действия и подтвержденные достижения в играх с понятной системой баллов и согласованных наград.
 
 ### Задача проекта
 
 Не бороться с самим интересом к играм, а использовать уже существующую мотивацию для учебы, чтения, движения, творчества, общения и самостоятельности.
 
-Ребенок выбирает задание из подходящих вариантов. После выполнения он показывает результат, родитель проверяет отчет и выдает заранее согласованную награду.
+Ребенок выбирает реальные задания и отмечает игровые достижения. Взрослые подтверждают конкретный результат, а психолог рассматривает его вместе с игровым временем, сном, учебой, движением и отношениями.
 
 ### Три участника
 
-- Ребенок выбирает задание, публикует результат, получает баллы и запрашивает награду.
-- Родитель проверяет отчет, подтверждает фактическую выдачу награды и участвует в семейных договоренностях.
-- Модератор с профессиональными знаниями психолога подбирает задания, анализирует динамику и корректирует план.
+- Ребенок выбирает задание, публикует реальный или игровой результат, отмечает время игры, получает баллы за подтвержденное достижение и запрашивает награду.
+- Родитель проверяет отчет, подтверждает фактическую выдачу награды и участвует в открытых семейных договоренностях.
+- Модератор с профессиональными знаниями психолога подбирает задания, задает видимый игровой план, предлагает смежные игры или легкие этапы и анализирует динамику.
 ### Текущая стадия
 
 Сейчас опубликованы посадочная страница и статическая демонстрация трех ролей в одном браузере. Мы ищем первые семьи и психологов, чтобы проверить рабочие сценарии и уточнить методику.
@@ -61,19 +61,19 @@ Play to Grow не ставит диагноз, не заменяет врача 
 
 Canonical URL: https://playtogrow.online/en/about/
 
-Play to Grow connects useful real-life actions chosen by a child with gaming rewards agreed by the family in advance.
+Play to Grow connects real-life actions chosen by a child and confirmed in-game achievements with a clear system of points and agreed rewards.
 
 ### Project purpose
 
 The goal is not to fight the child's interest in games, but to use an existing source of motivation for learning, reading, movement, creativity, relationships, and independence.
 
-The child chooses from suitable quests. After completing one, they share the result; a parent reviews the report and provides the reward agreed in advance.
+The child chooses real-life quests and logs in-game achievements. Adults confirm a specific result, while a psychologist considers it alongside play time, sleep, education, movement, and relationships.
 
 ### Three participants
 
-- The child chooses a quest, shares the result, earns points, and requests a reward.
-- The parent reviews the report, confirms actual reward delivery, and takes part in the family agreement.
-- A moderator with a psychologist's professional knowledge selects quests, analyzes progress, and adjusts the plan.
+- The child chooses a quest, shares a real-life or in-game result, logs play time, earns points for a confirmed achievement, and requests a reward.
+- The parent reviews the report, confirms actual reward delivery, and takes part in a transparent family agreement.
+- A moderator with a psychologist's professional knowledge selects quests, sets a visible game plan, suggests related games or easier stages, and analyzes progress.
 ### Current stage
 
 The current release is a landing page and a static three-role demo in one browser. We are looking for the first families and psychologists to test the workflow and refine the method.
@@ -85,9 +85,9 @@ Play to Grow does not diagnose, replace a doctor or psychotherapist, or promise 
 
 Canonical URL: https://playtogrow.ru/how-it-works/
 
-Цель, задание и награда обсуждаются заранее. Ребенок сохраняет выбор, взрослые замечают усилие, а психолог помогает анализировать динамику.
+Реальные задания, игровой план и критерии наград обсуждаются заранее и видны ребенку. Время игры отмечается для понимания контекста, но само по себе не приносит баллы и не блокирует игру.
 
-### Шесть шагов
+### Реальные задания
 
 1. Семья и психолог выбирают направление развития.
 2. Ребенок выбирает одно из предложенных заданий.
@@ -95,24 +95,32 @@ Canonical URL: https://playtogrow.ru/how-it-works/
 4. Родитель подтверждает результат или спокойно возвращает его на доработку.
 5. После подтверждения ребенок получает баллы и запрашивает согласованную игровую награду.
 6. Психолог анализирует динамику и вместе с семьей меняет следующие задания.
+### Игровой прогресс
+
+1. Психолог и модератор задают понятную цель и число игровых этапов на неделю.
+2. Ребенок отмечает победу или достижение и фактически проведенное в игре время.
+3. Взрослый подтверждает достижение, после чего начисляются заранее известные баллы.
+4. Если этапов меньше плана, ребенку предлагается выбрать дополнительный реальный квест без штрафа и потери уже заработанных баллов.
+5. Психолог может предложить смежную игру или легкий уровень, чтобы увидеть новые сильные стороны и сохранить переживание успеха.
 ### Что считается наградой
 
-Это может быть дополнительное игровое время, внутриигровой бонус или валюта, совместная игра либо другая ценная для ребенка возможность. Семья заранее определяет, какие награды допустимы и как они выдаются.
+Это может быть внутриигровой бонус или валюта, совместная игра либо другая ценная для ребенка возможность. Семья заранее определяет, какие награды допустимы, сколько они стоят в баллах и как выдаются.
 
 ### Что платформа не делает
 
 - Не покупает игровую валюту автоматически.
 - Не подключается к аккаунтам ребенка в играх.
-- Не измеряет и не блокирует экранное время.
+- Не измеряет время автоматически и не блокирует устройства.
+- Не использует скрытые штрафы или невидимые ребенку условия.
 - Не заменяет профессиональную оценку состояния ребенка.
 
 ## How Play to Grow works
 
 Canonical URL: https://playtogrow.online/en/how-it-works/
 
-The goal, quest, and reward are discussed in advance. The child keeps a choice, adults notice the effort, and a psychologist helps analyze progress.
+Real-life quests, the game plan, and reward criteria are agreed in advance and visible to the child. Play time is logged for context but does not earn points by itself or block play.
 
-### Six steps
+### Real-life quests
 
 1. The family and psychologist choose a development area.
 2. The child chooses one of the available quests.
@@ -120,15 +128,23 @@ The goal, quest, and reward are discussed in advance. The child keeps a choice, 
 4. A parent approves the result or calmly returns it for an update.
 5. After approval, the child earns points and requests an agreed gaming reward.
 6. The psychologist analyzes progress and adjusts future quests with the family.
+### In-game progress
+
+1. The psychologist and moderator set a clear goal and a weekly number of game stages.
+2. The child logs a win or achievement and the time actually spent playing.
+3. An adult reviews the achievement; the published number of points is awarded after approval.
+4. If fewer stages are completed than planned, the child is offered a voluntary extra real-life quest without a penalty or loss of earned points.
+5. A psychologist may suggest a related game or an easier level to explore new strengths and preserve a sense of success.
 ### What can be a reward
 
-It may be extra game time, an in-game bonus or currency, playing together, or another opportunity that matters to the child. The family decides in advance which rewards are acceptable and how they are delivered.
+It may be an in-game bonus or currency, playing together, or another opportunity that matters to the child. The family decides in advance which rewards are acceptable, their point cost, and how they are delivered.
 
 ### What the platform does not do
 
 - It does not buy game currency automatically.
 - It does not connect to the child's gaming accounts.
-- It does not measure or block screen time.
+- It does not measure play time automatically or block devices.
+- It does not use hidden penalties or conditions the child cannot see.
 - It does not replace a professional assessment of the child's condition.
 
 ## Play to Grow для родителей
@@ -140,10 +156,10 @@ Canonical URL: https://playtogrow.ru/for-parents/
 ### Что потребуется от родителя
 
 - Вместе выбрать несколько подходящих заданий, а не назначать одно без выбора.
-- Заранее обсудить стоимость наград в баллах и семейные ограничения.
-- Проверять конкретный результат, а не сравнивать ребенка с другими.
+- Заранее обсудить стоимость наград, недельный бюджет и открытые правила.
+- Подтверждать конкретные реальные и игровые результаты, а не сравнивать ребенка с другими.
 - Подтверждать только фактически выданную награду.
-- Обсуждать динамику и трудности с психологом.
+- Обсуждать с психологом игровое время в контексте сна, учебы, движения, общения и самочувствия.
 ### Когда стоит обратиться к специалисту
 
 Частые конфликты вокруг игр сами по себе не являются диагнозом. Если игры заметно вытесняют сон, учебу, отношения или другие важные области жизни, либо ребенок продолжает играть несмотря на серьезные последствия, обсудите ситуацию с квалифицированным психологом или врачом.
@@ -162,10 +178,10 @@ A parent does not turn every task into a transaction. Their role is to agree on 
 ### What the parent does
 
 - Offer several suitable quests instead of assigning one with no choice.
-- Agree on point costs and family limits before the quest begins.
-- Review the specific result instead of comparing the child with others.
+- Agree on point costs, the weekly budget, and visible rules in advance.
+- Review specific real-life and in-game results instead of comparing the child with others.
 - Confirm only a reward that was actually delivered.
-- Discuss progress and difficulties with a psychologist.
+- Discuss play time with a psychologist in the context of sleep, education, movement, relationships, and wellbeing.
 ### When to contact a professional
 
 Frequent arguments about games are not a diagnosis by themselves. If gaming noticeably displaces sleep, education, relationships, or other important parts of life, or continues despite serious negative consequences, discuss the situation with a qualified psychologist or doctor.
@@ -179,18 +195,18 @@ For a first conversation, say that you are a parent, give the child's age range 
 
 Canonical URL: https://playtogrow.ru/for-children/
 
-Ты выбираешь одно из предложенных заданий в реальной жизни. За выполненный результат можно получить баллы и запросить игровую награду, о которой вы договорились заранее.
+Ты выбираешь реальные задания и отмечаешь свои достижения в игре. За подтвержденный результат можно получить баллы и запросить награду, о которой вы договорились заранее.
 
 ### Что делаешь ты
 
-1. Смотришь доступные задания и выбираешь подходящее.
-2. Выполняешь его в своем темпе.
-3. Пишешь коротко, что получилось, и прикладываешь результат, если это нужно.
-4. После проверки получаешь баллы.
+1. Смотришь доступные реальные задания и игровой план.
+2. Выбираешь задание или проходишь подходящий этап в игре.
+3. Пишешь коротко, что получилось, а для игрового результата отмечаешь и фактическое время.
+4. После проверки результата получаешь заранее известные баллы.
 5. Выбираешь доступную награду и отправляешь запрос родителю.
-### Если задание не подходит
+### Если план не выполнен
 
-Можно сказать об этом родителю или психологу, попросить помощь, выбрать другой вариант или предложить свое задание. Смысл системы — не наказание и не оценка личности, а понятный следующий шаг.
+Можно выбрать дополнительный реальный квест, попросить помощь, попробовать предложенный легкий этап или обсудить другой вариант. Уже заработанные баллы не отнимаются, скрытых штрафов нет.
 
 ### Что важно знать
 
@@ -201,18 +217,18 @@ Canonical URL: https://playtogrow.ru/for-children/
 
 Canonical URL: https://playtogrow.online/en/for-children/
 
-You choose one of the available real-life quests. A completed result can earn points that you use to request a gaming reward agreed in advance.
+You choose real-life quests and log your in-game achievements. A confirmed result can earn points that you use to request a reward agreed in advance.
 
 ### What you do
 
-1. Look through the available quests and choose one that fits.
-2. Complete it at your own pace.
-3. Write a short note about the result and attach evidence if needed.
-4. Earn points after the result is reviewed.
+1. Look through the available real-life quests and the game plan.
+2. Choose a quest or complete a suitable stage in a game.
+3. Write a short note about the result and log the actual time for an in-game result.
+4. Earn the published number of points after the result is reviewed.
 5. Choose an available reward and send a request to your parent.
-### If a quest does not work for you
+### If the plan is not completed
 
-Tell a parent or psychologist, ask for help, choose another option, or suggest your own quest. The system is not meant as a punishment or a judgment of you; it is meant to make the next step clear.
+You can choose an extra real-life quest, ask for help, try a suggested easier stage, or discuss another option. Earned points are not removed and there are no hidden penalties.
 
 ### Important
 
@@ -228,13 +244,14 @@ Canonical URL: https://playtogrow.ru/for-psychologists/
 ### Предполагаемая роль
 
 - Уточнять запрос семьи и функциональные трудности без постановки диагноза через сайт.
-- Подбирать наблюдаемые задания и критерии выполнения.
+- Подбирать наблюдаемые реальные задания и критерии выполнения.
+- Задавать видимый ребенку план игрового прогресса и при необходимости предлагать смежные игры или легкие этапы.
+- Рассматривать игровое время вместе со сном, учебой, движением, отношениями и самочувствием, а не как отдельный показатель успеха.
 - Помогать семье согласовать награды, не усиливающие конфликт и финансовый риск.
-- Анализировать динамику, причины срывов и необходимость изменения плана.
 - Обозначать случаи, когда формат проекта не подходит и нужна другая помощь.
 ### Что мы хотим проверить
 
-Нас интересует не количество выданных наград само по себе, а устойчивость участия, перенос инициативы в реальную жизнь, качество семейных договоренностей и отсутствие усиления конфликта.
+Нас интересует не количество минут или выданных наград само по себе, а устойчивость участия, перенос инициативы в реальную жизнь, качество семейных договоренностей и отсутствие усиления конфликта.
 
 ### Приглашение к сотрудничеству
 
@@ -250,13 +267,14 @@ A professional helps turn the general idea into an individualized, observable, a
 ### Proposed role
 
 - Clarify the family's request and functional difficulties without diagnosing through the website.
-- Select observable quests and completion criteria.
+- Select observable real-life quests and completion criteria.
+- Set a game-progress plan visible to the child and, when useful, suggest related games or easier stages.
+- Consider play time alongside sleep, education, movement, relationships, and wellbeing rather than treating it as a standalone success measure.
 - Help the family agree on rewards that do not intensify conflict or financial risk.
-- Analyze progress, reasons for setbacks, and the need to adjust the plan.
 - Identify situations where this format is unsuitable and different support is needed.
 ### What we want to test
 
-The relevant outcomes are not simply the number of rewards delivered. We want to examine sustained participation, initiative in real life, the quality of family agreements, and whether conflict is avoided rather than intensified.
+The relevant outcomes are not simply minutes played or rewards delivered. We want to examine sustained participation, initiative in real life, the quality of family agreements, and whether conflict is avoided rather than intensified.
 
 ### Invitation to collaborate
 
@@ -330,18 +348,19 @@ Play to Grow пока является проверяемой рабочей г�
 ### Принципы пилота
 
 - Выбор ребенка внутри безопасных вариантов.
-- Небольшие наблюдаемые задания вместо абстрактных требований.
-- Правила и награды обсуждаются до выполнения.
-- Родитель подтверждает реальный результат и фактическую выдачу.
+- Небольшие наблюдаемые реальные задания и конкретные игровые достижения вместо абстрактных требований.
+- Игровой план, критерии, баллы и дополнительные варианты видны ребенку и обсуждаются заранее.
+- Минуты игры отмечаются для контекста, но сами по себе не приносят баллы и не включают блокировку.
+- Родитель подтверждает конкретный результат и фактическую выдачу награды.
 - Психолог анализирует контекст, динамику и побочные эффекты.
-- План меняется, если мотивация превращается в давление или усиливает конфликт.
+- Нет скрытых штрафов: план меняется, если мотивация превращается в давление или усиливает конфликт.
 ### Что оценивается
 
-На пилоте можно наблюдать завершение заданий, регулярность участия, самостоятельный выбор, качество семейных договоренностей и субъективную оценку конфликта. Эти показатели не являются диагнозом и не доказывают лечебную эффективность.
+На пилоте можно наблюдать завершение реальных и игровых этапов, регулярность участия, самостоятельный выбор, игровое время в контексте других областей жизни, качество семейных договоренностей и субъективную оценку конфликта. Эти показатели не являются диагнозом и не доказывают лечебную эффективность.
 
 ### Официальные источники
 
-ВОЗ описывает игровое расстройство через нарушение контроля, приоритет игр над другими занятиями и продолжение несмотря на негативные последствия при значимом нарушении функционирования. Диагноз относится к компетенции квалифицированного специалиста; большое количество игрового времени само по себе недостаточно.
+ВОЗ описывает игровое расстройство через нарушение контроля, приоритет игр над другими занятиями и продолжение несмотря на негативные последствия при значимом нарушении функционирования. AAP предлагает учитывать не только длительность, но и качество использования, сон, движение, обучение и отношения. Диагноз относится к компетенции квалифицированного специалиста; большое количество игрового времени само по себе недостаточно.
 
 
 ## Play to Grow method and sources
@@ -357,18 +376,19 @@ When gaming is already a strong source of motivation, it may be connected to sma
 ### Pilot principles
 
 - Child choice within safe options.
-- Small observable quests instead of abstract demands.
-- Rules and rewards agreed before completion.
+- Small observable real-life quests and specific in-game achievements instead of abstract demands.
+- The game plan, criteria, points, and extra options are visible to the child and agreed in advance.
+- Play time is logged for context but does not earn points by itself or trigger a block.
 - A parent confirms both the result and actual reward delivery.
 - A psychologist considers context, progress, and unintended effects.
-- The plan changes if motivation becomes pressure or increases conflict.
+- There are no hidden penalties: the plan changes if motivation becomes pressure or increases conflict.
 ### What is observed
 
-The pilot may track quest completion, continued participation, independent choice, the quality of family agreements, and subjective reports of conflict. These measures are not a diagnosis and do not demonstrate treatment effectiveness.
+The pilot may track completed real-life and in-game stages, continued participation, independent choice, play time in the context of other areas of life, the quality of family agreements, and subjective reports of conflict. These measures are not a diagnosis and do not demonstrate treatment effectiveness.
 
 ### Official sources
 
-WHO describes gaming disorder through impaired control, priority given to gaming over other activities, and continuation despite negative consequences when this causes significant functional impairment. Diagnosis belongs to a qualified professional; a high amount of gaming time alone is not sufficient.
+WHO describes gaming disorder through impaired control, priority given to gaming over other activities, and continuation despite negative consequences when this causes significant functional impairment. The AAP recommends considering not only duration but also content quality, sleep, movement, learning, and relationships. Diagnosis belongs to a qualified professional; a high amount of gaming time alone is not sufficient.
 
 
 ## Безопасность, этика и данные
@@ -380,7 +400,7 @@ Canonical URL: https://playtogrow.ru/safety/
 ### Что хранит текущая демоверсия
 
 - Псевдоним и учебные примеры заданий, если пользователь их меняет.
-- Отчеты, баллы, награды и настройки внутри localStorage браузера.
+- Отчеты, баллы, награды, игровой план, вручную отмеченные достижения и минуты внутри localStorage браузера.
 - Отдельную копию на каждом устройстве, в каждом браузере и на каждом домене.
 ### Чего не следует вводить
 
@@ -407,7 +427,7 @@ The public website introduces the idea. Viewing it and using the demo do not req
 ### What the current demo stores
 
 - A nickname and sample quest content if the user changes them.
-- Reports, points, rewards, and settings in browser localStorage.
+- Reports, points, rewards, the game plan, manually logged achievements, and minutes in browser localStorage.
 - A separate copy on every device, browser, and domain.
 ### What not to enter
 

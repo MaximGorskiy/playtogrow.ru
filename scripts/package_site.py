@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "docs"
 OUTPUT = ROOT / "release"
 OUTPUT.mkdir(exist_ok=True)
-VERSION = "20261030-1"
+VERSION = "20261030-2"
 
 subprocess.run([sys.executable, str(ROOT / "scripts" / "build_discovery.py"), "--check"], check=True)
 

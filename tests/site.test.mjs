@@ -45,6 +45,21 @@ test('landing pages contain crawlable content in their initial language', () => 
   assert.ok(en.includes('href="https://playtogrow.ru/"'));
 });
 
+test('public explanations describe visible game progress instead of a time cap', () => {
+  const ruLanding = text(join(docs, 'index.html'));
+  const enLanding = text(join(docs, 'en', 'index.html'));
+  const ruHow = text(join(docs, 'how-it-works', 'index.html'));
+  const enHow = text(join(docs, 'en', 'how-it-works', 'index.html'));
+  const ruMethod = text(join(docs, 'methodology', 'index.html'));
+  assert.ok(ruLanding.includes('Время игры отмечается для понимания контекста, но не используется как жесткий лимит'));
+  assert.ok(enLanding.includes('Play time is logged as context, not used as a hard limit'));
+  assert.ok(ruHow.includes('Игровой прогресс'));
+  assert.ok(enHow.includes('In-game progress'));
+  assert.equal(ruHow.includes('дополнительное игровое время'), false);
+  assert.equal(enHow.includes('extra game time'), false);
+  assert.ok(ruMethod.includes('Нет скрытых штрафов'));
+});
+
 test('demo is excluded from indexing without blocking link discovery', () => {
   const demo = text(join(docs, 'demo.html'));
   const robots = text(join(docs, 'robots.txt'));
