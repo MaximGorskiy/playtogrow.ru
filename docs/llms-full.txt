@@ -1,0 +1,463 @@
+# Play to Grow
+
+> Play to Grow is a bilingual pilot project that uses a child's interest in computer games as motivation for selected useful real-life actions and family-agreed gaming rewards.
+
+Play to Grow is not a diagnostic or medical service and does not promise treatment outcomes. The public demo has three roles in one browser, uses sample data, and stores changes only in localStorage.
+
+## Canonical versions
+
+- [Русская версия](https://playtogrow.ru/)
+- [English version](https://playtogrow.online/en/)
+
+## Project information
+
+- [About Play to Grow](https://playtogrow.online/en/about/): The purpose of Play to Grow, its three participant roles, and an honest description of the pilot's current stage.
+- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): The quest cycle: child choice, report, parent review, points, a gaming reward, and progress analysis with a psychologist.
+- [Play to Grow for parents](https://playtogrow.online/en/for-parents/): The parent's role in Play to Grow, how to agree on quests and gaming rewards, and when professional advice may be needed.
+- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, show the result, earn points, and request agreed gaming bonuses.
+- [Play to Grow for psychologists](https://playtogrow.online/en/for-psychologists/): The psychologist's role in the Play to Grow pilot: professional quest selection, progress review, ethical boundaries, and collaboration.
+- [Joining the Play to Grow pilot](https://playtogrow.online/en/pilot/): Who the pilot is looking for, how first contact works, what parent funding supports, and which outcomes are not guaranteed.
+- [Play to Grow method and sources](https://playtogrow.online/en/methodology/): The working hypothesis, principles, observation criteria, and official sources on problematic gaming behavior.
+- [Safety, ethics, and data](https://playtogrow.online/en/safety/): What the Play to Grow demo stores, what not to enter, and how the public website is separated from a future protected system.
+- [Contact Play to Grow](https://playtogrow.online/en/contact/): Play to Grow contact details for parents, families, and psychologists, including what to write and what data not to send.
+- [Questions and answers](https://playtogrow.online/en/faq/): Direct answers about quests, rewards, roles, data, and participation.
+- [Project updates](https://playtogrow.online/en/updates/): Dated public changes without participant data.
+
+## Contact
+
+- Telegram: https://t.me/MaksimGorskiy
+- Email: 31415926x2@gmail.com
+- Phone: +7 920 015-63-12
+
+Last updated: 2026-10-30
+
+# Detailed page summaries
+
+## О проекте Play to Grow
+
+Canonical URL: https://playtogrow.ru/about/
+
+Play to Grow связывает выбранные ребенком полезные действия в реальной жизни с игровыми наградами, которые семья согласовала заранее.
+
+### Задача проекта
+
+Не бороться с самим интересом к играм, а использовать уже существующую мотивацию для учебы, чтения, движения, творчества, общения и самостоятельности.
+
+Ребенок выбирает задание из подходящих вариантов. После выполнения он показывает результат, родитель проверяет отчет и выдает заранее согласованную награду.
+
+### Три участника
+
+- Ребенок выбирает задание, публикует результат, получает баллы и запрашивает награду.
+- Родитель проверяет отчет, подтверждает фактическую выдачу награды и участвует в семейных договоренностях.
+- Модератор с профессиональными знаниями психолога подбирает задания, анализирует динамику и корректирует план.
+### Текущая стадия
+
+Сейчас опубликованы посадочная страница и статическая демонстрация трех ролей в одном браузере. Мы ищем первые семьи и психологов, чтобы проверить рабочие сценарии и уточнить методику.
+
+Play to Grow не ставит диагноз, не заменяет врача или психотерапевта и не обещает гарантированного результата.
+
+
+## About Play to Grow
+
+Canonical URL: https://playtogrow.online/en/about/
+
+Play to Grow connects useful real-life actions chosen by a child with gaming rewards agreed by the family in advance.
+
+### Project purpose
+
+The goal is not to fight the child's interest in games, but to use an existing source of motivation for learning, reading, movement, creativity, relationships, and independence.
+
+The child chooses from suitable quests. After completing one, they share the result; a parent reviews the report and provides the reward agreed in advance.
+
+### Three participants
+
+- The child chooses a quest, shares the result, earns points, and requests a reward.
+- The parent reviews the report, confirms actual reward delivery, and takes part in the family agreement.
+- A moderator with a psychologist's professional knowledge selects quests, analyzes progress, and adjusts the plan.
+### Current stage
+
+The current release is a landing page and a static three-role demo in one browser. We are looking for the first families and psychologists to test the workflow and refine the method.
+
+Play to Grow does not diagnose, replace a doctor or psychotherapist, or promise a guaranteed outcome.
+
+
+## Как работает Play to Grow
+
+Canonical URL: https://playtogrow.ru/how-it-works/
+
+Цель, задание и награда обсуждаются заранее. Ребенок сохраняет выбор, взрослые замечают усилие, а психолог помогает анализировать динамику.
+
+### Шесть шагов
+
+1. Семья и психолог выбирают направление развития.
+2. Ребенок выбирает одно из предложенных заданий.
+3. Ребенок выполняет задание и отправляет короткий отчет.
+4. Родитель подтверждает результат или спокойно возвращает его на доработку.
+5. После подтверждения ребенок получает баллы и запрашивает согласованную игровую награду.
+6. Психолог анализирует динамику и вместе с семьей меняет следующие задания.
+### Что считается наградой
+
+Это может быть дополнительное игровое время, внутриигровой бонус или валюта, совместная игра либо другая ценная для ребенка возможность. Семья заранее определяет, какие награды допустимы и как они выдаются.
+
+### Что платформа не делает
+
+- Не покупает игровую валюту автоматически.
+- Не подключается к аккаунтам ребенка в играх.
+- Не измеряет и не блокирует экранное время.
+- Не заменяет профессиональную оценку состояния ребенка.
+
+## How Play to Grow works
+
+Canonical URL: https://playtogrow.online/en/how-it-works/
+
+The goal, quest, and reward are discussed in advance. The child keeps a choice, adults notice the effort, and a psychologist helps analyze progress.
+
+### Six steps
+
+1. The family and psychologist choose a development area.
+2. The child chooses one of the available quests.
+3. The child completes it and submits a short report.
+4. A parent approves the result or calmly returns it for an update.
+5. After approval, the child earns points and requests an agreed gaming reward.
+6. The psychologist analyzes progress and adjusts future quests with the family.
+### What can be a reward
+
+It may be extra game time, an in-game bonus or currency, playing together, or another opportunity that matters to the child. The family decides in advance which rewards are acceptable and how they are delivered.
+
+### What the platform does not do
+
+- It does not buy game currency automatically.
+- It does not connect to the child's gaming accounts.
+- It does not measure or block screen time.
+- It does not replace a professional assessment of the child's condition.
+
+## Play to Grow для родителей
+
+Canonical URL: https://playtogrow.ru/for-parents/
+
+Родитель не превращает каждое дело в торг. Его задача — заранее договориться о правилах, замечать реальные усилия и последовательно выполнять обещания.
+
+### Что потребуется от родителя
+
+- Вместе выбрать несколько подходящих заданий, а не назначать одно без выбора.
+- Заранее обсудить стоимость наград в баллах и семейные ограничения.
+- Проверять конкретный результат, а не сравнивать ребенка с другими.
+- Подтверждать только фактически выданную награду.
+- Обсуждать динамику и трудности с психологом.
+### Когда стоит обратиться к специалисту
+
+Частые конфликты вокруг игр сами по себе не являются диагнозом. Если игры заметно вытесняют сон, учебу, отношения или другие важные области жизни, либо ребенок продолжает играть несмотря на серьезные последствия, обсудите ситуацию с квалифицированным психологом или врачом.
+
+### Первое обращение
+
+Для первого разговора достаточно написать, что вы родитель, указать возрастную группу ребенка без имени и кратко описать, какие трудности вызывают игры. Не отправляйте через публичные контакты диагнозы, медицинские документы и другие чувствительные сведения.
+
+
+## Play to Grow for parents
+
+Canonical URL: https://playtogrow.online/en/for-parents/
+
+A parent does not turn every task into a transaction. Their role is to agree on clear rules, notice real effort, and consistently keep promises.
+
+### What the parent does
+
+- Offer several suitable quests instead of assigning one with no choice.
+- Agree on point costs and family limits before the quest begins.
+- Review the specific result instead of comparing the child with others.
+- Confirm only a reward that was actually delivered.
+- Discuss progress and difficulties with a psychologist.
+### When to contact a professional
+
+Frequent arguments about games are not a diagnosis by themselves. If gaming noticeably displaces sleep, education, relationships, or other important parts of life, or continues despite serious negative consequences, discuss the situation with a qualified psychologist or doctor.
+
+### First contact
+
+For a first conversation, say that you are a parent, give the child's age range without their name, and briefly describe the difficulties related to gaming. Do not send diagnoses, medical records, or other sensitive information through public contact channels.
+
+
+## Play to Grow для детей и подростков
+
+Canonical URL: https://playtogrow.ru/for-children/
+
+Ты выбираешь одно из предложенных заданий в реальной жизни. За выполненный результат можно получить баллы и запросить игровую награду, о которой вы договорились заранее.
+
+### Что делаешь ты
+
+1. Смотришь доступные задания и выбираешь подходящее.
+2. Выполняешь его в своем темпе.
+3. Пишешь коротко, что получилось, и прикладываешь результат, если это нужно.
+4. После проверки получаешь баллы.
+5. Выбираешь доступную награду и отправляешь запрос родителю.
+### Если задание не подходит
+
+Можно сказать об этом родителю или психологу, попросить помощь, выбрать другой вариант или предложить свое задание. Смысл системы — не наказание и не оценка личности, а понятный следующий шаг.
+
+### Что важно знать
+
+Демоверсия не подключается к твоей игре и не видит игровой аккаунт. Не вводи в нее настоящее имя, адрес, школу, пароли или другие личные сведения.
+
+
+## Play to Grow for children and teenagers
+
+Canonical URL: https://playtogrow.online/en/for-children/
+
+You choose one of the available real-life quests. A completed result can earn points that you use to request a gaming reward agreed in advance.
+
+### What you do
+
+1. Look through the available quests and choose one that fits.
+2. Complete it at your own pace.
+3. Write a short note about the result and attach evidence if needed.
+4. Earn points after the result is reviewed.
+5. Choose an available reward and send a request to your parent.
+### If a quest does not work for you
+
+Tell a parent or psychologist, ask for help, choose another option, or suggest your own quest. The system is not meant as a punishment or a judgment of you; it is meant to make the next step clear.
+
+### Important
+
+The demo does not connect to your game and cannot see your gaming account. Do not enter your real full name, address, school, passwords, or other personal information.
+
+
+## Play to Grow для психологов
+
+Canonical URL: https://playtogrow.ru/for-psychologists/
+
+Специалист помогает превратить общую идею в индивидуальный, наблюдаемый и этически приемлемый процесс для конкретной семьи.
+
+### Предполагаемая роль
+
+- Уточнять запрос семьи и функциональные трудности без постановки диагноза через сайт.
+- Подбирать наблюдаемые задания и критерии выполнения.
+- Помогать семье согласовать награды, не усиливающие конфликт и финансовый риск.
+- Анализировать динамику, причины срывов и необходимость изменения плана.
+- Обозначать случаи, когда формат проекта не подходит и нужна другая помощь.
+### Что мы хотим проверить
+
+Нас интересует не количество выданных наград само по себе, а устойчивость участия, перенос инициативы в реальную жизнь, качество семейных договоренностей и отсутствие усиления конфликта.
+
+### Приглашение к сотрудничеству
+
+Проект ищет психологов, работающих с детьми, подростками, семьями или проблемным игровым поведением. Нужны критика формулировок, обсуждение этических границ и совместная разработка пилотного протокола.
+
+
+## Play to Grow for psychologists
+
+Canonical URL: https://playtogrow.online/en/for-psychologists/
+
+A professional helps turn the general idea into an individualized, observable, and ethically appropriate process for a specific family.
+
+### Proposed role
+
+- Clarify the family's request and functional difficulties without diagnosing through the website.
+- Select observable quests and completion criteria.
+- Help the family agree on rewards that do not intensify conflict or financial risk.
+- Analyze progress, reasons for setbacks, and the need to adjust the plan.
+- Identify situations where this format is unsuitable and different support is needed.
+### What we want to test
+
+The relevant outcomes are not simply the number of rewards delivered. We want to examine sustained participation, initiative in real life, the quality of family agreements, and whether conflict is avoided rather than intensified.
+
+### Invitation to collaborate
+
+We are looking for psychologists who work with children, teenagers, families, or problematic gaming behavior. We welcome critical review of the wording, discussion of ethical boundaries, and joint development of a pilot protocol.
+
+
+## Участие в пилоте Play to Grow
+
+Canonical URL: https://playtogrow.ru/pilot/
+
+Мы ищем первые семьи и психологов, чтобы проверить понятность сценария, жизнеспособность договоренностей и направления развития платформы.
+
+### Кого мы ищем
+
+- Родителей с ребенком или подростком, у которых игры стали постоянным источником конфликтов или вытесняют важные дела.
+- Психологов для профессионального сопровождения, обсуждения методики и этических границ.
+- Семьи, готовые обсуждать правила и давать конкретную обратную связь.
+### Как начинается работа
+
+1. Короткое знакомство без передачи документов и подробных персональных данных.
+2. Обсуждение ожиданий, границ и того, подходит ли пилот семье.
+3. Согласование небольшого набора заданий и наград.
+4. Проверка сценария и регулярный разбор трудностей.
+5. Решение о продолжении, изменении или прекращении участия.
+### Финансирование
+
+На пилотном этапе проект финансируют родители участников по своим возможностям. Все средства направляются на разработку, инфраструктуру и развитие методики. Автор не получает личной прибыли до ввода платформы в эксплуатацию.
+
+### Чего мы не обещаем
+
+Участие не гарантирует уменьшение игрового времени, исчезновение конфликтов или клинический результат. Пилот может быть остановлен, если формат не подходит ребенку или семье.
+
+
+## Joining the Play to Grow pilot
+
+Canonical URL: https://playtogrow.online/en/pilot/
+
+We are looking for the first families and psychologists to test whether the workflow is clear, agreements are workable, and the platform is developing in the right direction.
+
+### Who we are looking for
+
+- Parents of a child or teenager when gaming has become a constant source of conflict or displaces important activities.
+- Psychologists for professional support and discussion of the method and ethical boundaries.
+- Families willing to discuss rules and provide specific feedback.
+### How participation begins
+
+1. A short introduction without sending documents or detailed personal data.
+2. A discussion of expectations, boundaries, and whether the pilot fits the family.
+3. Agreement on a small set of quests and rewards.
+4. Testing the workflow and regularly reviewing difficulties.
+5. A decision to continue, adjust, or stop participation.
+### Funding
+
+During the pilot, participating parents contribute according to their means. All funds go to development, infrastructure, and refinement of the method. The author takes no personal profit before the platform is launched.
+
+### What we do not promise
+
+Participation does not guarantee reduced gaming time, the disappearance of conflict, or a clinical outcome. The pilot may stop if the format is not suitable for the child or family.
+
+
+## Методика и источники Play to Grow
+
+Canonical URL: https://playtogrow.ru/methodology/
+
+Play to Grow пока является проверяемой рабочей гипотезой, а не доказанным методом лечения. Мы отделяем наблюдаемые действия от клинической диагностики.
+
+### Рабочая гипотеза
+
+Если интерес к играм уже является сильной мотивацией, его можно связать с небольшими реальными действиями, которые ребенок выбирает из подходящего набора. Понятный цикл отчета и награды может помочь семье обсуждать усилие конкретно, а не через общий конфликт вокруг игр.
+
+### Принципы пилота
+
+- Выбор ребенка внутри безопасных вариантов.
+- Небольшие наблюдаемые задания вместо абстрактных требований.
+- Правила и награды обсуждаются до выполнения.
+- Родитель подтверждает реальный результат и фактическую выдачу.
+- Психолог анализирует контекст, динамику и побочные эффекты.
+- План меняется, если мотивация превращается в давление или усиливает конфликт.
+### Что оценивается
+
+На пилоте можно наблюдать завершение заданий, регулярность участия, самостоятельный выбор, качество семейных договоренностей и субъективную оценку конфликта. Эти показатели не являются диагнозом и не доказывают лечебную эффективность.
+
+### Официальные источники
+
+ВОЗ описывает игровое расстройство через нарушение контроля, приоритет игр над другими занятиями и продолжение несмотря на негативные последствия при значимом нарушении функционирования. Диагноз относится к компетенции квалифицированного специалиста; большое количество игрового времени само по себе недостаточно.
+
+
+## Play to Grow method and sources
+
+Canonical URL: https://playtogrow.online/en/methodology/
+
+Play to Grow is currently a testable working hypothesis, not an evidence-based treatment. Observable actions are kept separate from clinical diagnosis.
+
+### Working hypothesis
+
+When gaming is already a strong source of motivation, it may be connected to small real-life actions chosen by the child from a suitable set. A clear report-and-reward cycle may help a family discuss effort in concrete terms instead of through a general conflict about games.
+
+### Pilot principles
+
+- Child choice within safe options.
+- Small observable quests instead of abstract demands.
+- Rules and rewards agreed before completion.
+- A parent confirms both the result and actual reward delivery.
+- A psychologist considers context, progress, and unintended effects.
+- The plan changes if motivation becomes pressure or increases conflict.
+### What is observed
+
+The pilot may track quest completion, continued participation, independent choice, the quality of family agreements, and subjective reports of conflict. These measures are not a diagnosis and do not demonstrate treatment effectiveness.
+
+### Official sources
+
+WHO describes gaming disorder through impaired control, priority given to gaming over other activities, and continuation despite negative consequences when this causes significant functional impairment. Diagnosis belongs to a qualified professional; a high amount of gaming time alone is not sufficient.
+
+
+## Безопасность, этика и данные
+
+Canonical URL: https://playtogrow.ru/safety/
+
+Публичный сайт предназначен для знакомства с идеей. Для его просмотра и демоверсии не нужны реальные персональные данные ребенка.
+
+### Что хранит текущая демоверсия
+
+- Псевдоним и учебные примеры заданий, если пользователь их меняет.
+- Отчеты, баллы, награды и настройки внутри localStorage браузера.
+- Отдельную копию на каждом устройстве, в каждом браузере и на каждом домене.
+### Чего не следует вводить
+
+- Фамилию и полное имя ребенка.
+- Адрес, школу, расписание и точное местоположение.
+- Медицинские документы, диагнозы и заключения.
+- Пароли и данные игровых аккаунтов.
+- Фотографии и сведения, по которым можно идентифицировать ребенка.
+### Технические ограничения
+
+Переключатель ролей в демо не является авторизацией. Данные можно изменить инструментами браузера, они не синхронизируются и удаляются при очистке хранилища. Сайт не подключается к играм и не контролирует устройства.
+
+### Будущая рабочая система
+
+Реальные учетные записи, разграничение доступа и работа с персональными данными потребуют отдельного backend, согласий, правил хранения и удаления, журнала действий и правовой проверки. Эти функции не включены в текущую публичную демонстрацию.
+
+
+## Safety, ethics, and data
+
+Canonical URL: https://playtogrow.online/en/safety/
+
+The public website introduces the idea. Viewing it and using the demo do not require a child's real personal data.
+
+### What the current demo stores
+
+- A nickname and sample quest content if the user changes them.
+- Reports, points, rewards, and settings in browser localStorage.
+- A separate copy on every device, browser, and domain.
+### What not to enter
+
+- The child's full legal name.
+- Address, school, schedule, or precise location.
+- Medical documents, diagnoses, or professional reports.
+- Passwords or gaming-account credentials.
+- Photos or details that identify the child.
+### Technical limitations
+
+The role switch in the demo is not authentication. Browser tools can change the data; it is not synchronized and is deleted when site storage is cleared. The website does not connect to games or control devices.
+
+### Future production system
+
+Real accounts, access control, and personal-data processing require a separate backend, consent and retention rules, managed deletion, an audit log, and legal review. These capabilities are not part of the public demo.
+
+
+## Связаться с Play to Grow
+
+Canonical URL: https://playtogrow.ru/contact/
+
+Напишите, если хотите обсудить участие семьи в пилоте или профессиональное сотрудничество.
+
+### Контакты
+
+### Что написать
+
+- Кто вы: родитель, психолог или другой специалист.
+- Возрастную группу ребенка без имени, если обращается родитель.
+- Какой вопрос вы хотите обсудить.
+- Как и когда удобнее получить ответ.
+### Не отправляйте чувствительные данные
+
+До согласования безопасного канала не присылайте диагнозы, документы, фотографии, адреса, пароли и другие персональные сведения ребенка.
+
+
+## Contact Play to Grow
+
+Canonical URL: https://playtogrow.online/en/contact/
+
+Get in touch to discuss family participation in the pilot or professional collaboration.
+
+### Contact details
+
+### What to write
+
+- Whether you are a parent, psychologist, or another professional.
+- The child's age range without their name if you are a parent.
+- The general question you want to discuss.
+- How and when you prefer to receive a reply.
+### Do not send sensitive data
+
+Until a suitable secure channel is agreed, do not send diagnoses, documents, photographs, addresses, passwords, or other personal information about a child.

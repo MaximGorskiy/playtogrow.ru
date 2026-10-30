@@ -1,15 +1,35 @@
 <!doctype html>
-<html lang="ru" data-default-language="ru" data-ru-url="https://playtogrow.ru/" data-en-url="https://playtogrow.online/" data-demo-url="./demo.html">
+<html lang="ru" data-page-language="ru" data-local-ru-url="./" data-local-en-url="./en/">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173f37">
   <meta name="description" content="Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta name="author" content="Максим Горский">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Play to Grow">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Play to Grow — играй, чтобы расти">
+  <meta property="og:description" content="Интерес ребенка к играм становится мотивацией для полезных действий, которые семья заранее согласует с психологом.">
+  <meta property="og:url" content="https://playtogrow.ru/">
+  <meta property="og:image" content="https://playtogrow.ru/assets/mark.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Play to Grow — играй, чтобы расти">
+  <meta name="twitter:description" content="Пилотный проект для семей и психологов: реальные задания и согласованные игровые награды.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
   <title>Play to Grow — играй, чтобы расти</title>
+  <link rel="canonical" href="https://playtogrow.ru/">
+  <link rel="alternate" hreflang="ru" href="https://playtogrow.ru/">
+  <link rel="alternate" hreflang="en" href="https://playtogrow.online/en/">
+  <link rel="alternate" hreflang="x-default" href="https://playtogrow.ru/">
+  <link rel="alternate" type="application/rss+xml" title="Обновления Play to Grow" href="https://playtogrow.ru/feed.xml">
   <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./landing.css?v=20261026-4">
-  <script type="module" src="./landing.js?v=20261026-4"></script>
+  <link rel="stylesheet" href="./landing.css?v=20261030-1">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://playtogrow.ru/#website","url":"https://playtogrow.ru/","name":"Play to Grow","alternateName":"Играй, чтобы расти","description":"Пилотный проект, который использует интерес ребенка к компьютерным играм как мотивацию для полезных действий в реальной жизни.","inLanguage":["ru","en"]},{"@type":"Person","@id":"https://playtogrow.ru/#author","name":"Максим Горский","url":"https://playtogrow.ru/","email":"mailto:31415926x2@gmail.com","telephone":"+79200156312"},{"@type":"WebApplication","@id":"https://playtogrow.ru/#demo","name":"Play to Grow — демонстрация","url":"https://playtogrow.ru/demo.html","applicationCategory":"EducationalApplication","operatingSystem":"Web","isAccessibleForFree":true,"inLanguage":["ru","en"],"description":"Статическая демонстрация трех ролей: ребенка, родителя и модератора. Данные сохраняются только в браузере пользователя.","author":{"@id":"https://playtogrow.ru/#author"}},{"@type":"WebPage","@id":"https://playtogrow.ru/#page","url":"https://playtogrow.ru/","name":"Play to Grow — играй, чтобы расти","isPartOf":{"@id":"https://playtogrow.ru/#website"},"about":{"@id":"https://playtogrow.ru/#demo"},"inLanguage":"ru","dateModified":"2026-10-30"}]}
+  </script>
+  <script type="module" src="./landing.js?v=20261030-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Перейти к содержимому</a>
@@ -19,17 +39,18 @@
       <span>Play to Grow<small data-i18n="slogan">играй, чтобы расти</small></span>
     </a>
     <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria-label="navLabel">
-      <a href="#idea" data-i18n="navIdea">Идея</a>
-      <a href="#participants" data-i18n="navParticipants">Участники</a>
-      <a href="#pilot" data-i18n="navPilot">Пилот</a>
+      <a href="./how-it-works/" data-i18n="navIdea">Как это работает</a>
+      <a href="./for-parents/" data-i18n="navParticipants">Родителям</a>
+      <a href="./for-psychologists/" data-i18n="navPsychologists">Психологам</a>
+      <a href="./pilot/" data-i18n="navPilot">Пилот</a>
       <a href="#contact" data-i18n="navContact">Контакты</a>
     </nav>
     <div class="header-actions">
       <div class="language-switch" aria-label="Язык сайта" data-i18n-aria-label="languageLabel">
-        <button type="button" data-language="ru" aria-pressed="true">RU</button>
-        <button type="button" data-language="en" aria-pressed="false">EN</button>
+        <a href="https://playtogrow.ru/" data-language="ru" data-local-url="./" aria-current="page">RU</a>
+        <a href="https://playtogrow.online/en/" data-language="en" data-local-url="./en/">EN</a>
       </div>
-      <a class="button button-small" href="./demo.html#child/day" data-demo-link data-i18n="openDemo">Открыть демо</a>
+      <a class="button button-small" href="./demo.html?lang=ru&amp;v=20261030-1#child/day" data-i18n="openDemo">Открыть демо</a>
     </div>
   </header>
   <main id="main" tabindex="-1">
@@ -40,7 +61,7 @@
         <p class="hero-lead" data-i18n="heroLead">Ребенок выбирает полезные задания, получает поддержку взрослых и приближается к согласованным игровым наградам — без стыда, давления и борьбы с его интересами.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#contact" data-i18n="joinPilot">Стать участником пилота</a>
-          <a class="button button-ghost" href="./demo.html#child/day" data-demo-link data-i18n="viewDemo">Посмотреть демоверсию</a>
+          <a class="button button-ghost" href="./demo.html?lang=ru&amp;v=20261030-1#child/day" data-i18n="viewDemo">Посмотреть демоверсию</a>
         </div>
         <p class="hero-note" data-i18n="heroNote">Сейчас мы проверяем идею вместе с первыми семьями. Регистрация и передача данных ребенка на сайте не требуются.</p>
       </div>
@@ -86,7 +107,7 @@
       <article class="info-panel dark-panel">
         <p class="eyebrow" data-i18n="stageEyebrow">Честно о стадии проекта</p><h2 data-i18n="stageTitle">Сейчас это пилот, а не готовая медицинская программа</h2>
         <p data-i18n="stageText">Мы собираем обратную связь, уточняем методику и проверяем сценарии вместе с семьями и психологами. Платформа не ставит диагноз, не заменяет врача или психотерапевта и не обещает гарантированного результата.</p>
-        <a class="text-link" href="./demo.html#child/day" data-demo-link data-i18n="tryDemo">Попробовать прототип →</a>
+        <a class="text-link" href="./demo.html?lang=ru&amp;v=20261030-1#child/day" data-i18n="tryDemo">Попробовать прототип →</a>
       </article>
       <article class="info-panel finance-panel">
         <p class="eyebrow" data-i18n="financeEyebrow">Прозрачное финансирование</p><h2 data-i18n="financeTitle">Все средства — только на развитие проекта</h2>
@@ -97,6 +118,21 @@
     <section class="section specialists">
       <div><p class="eyebrow" data-i18n="specialistEyebrow">Приглашение специалистам</p><h2 data-i18n="specialistTitle">Ищу психологов для профессионального диалога и совместной работы</h2></div>
       <p data-i18n="specialistText">Если вы работаете с детьми, подростками, семьями или проблемным игровым поведением, давайте обсудим методику, этические границы и формат пилота. Профессиональная критика здесь так же важна, как поддержка.</p>
+    </section>
+    <section class="section resources" id="resources">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="resourcesEyebrow">Подробная информация</p>
+        <h2 data-i18n="resourcesTitle">Ответы для семьи и специалистов</h2>
+        <p data-i18n="resourcesIntro">На отдельных страницах собраны условия пилота, границы проекта, методика и ответы на частые вопросы.</p>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card" href="./about/"><strong data-i18n="resourceAbout">О проекте</strong><span data-i18n="resourceAboutText">Цель, участники и текущая стадия Play to Grow.</span></a>
+        <a class="resource-card" href="./for-parents/"><strong data-i18n="resourceParents">Родителям</strong><span data-i18n="resourceParentsText">Что потребуется от семьи и как устроены награды.</span></a>
+        <a class="resource-card" href="./for-children/"><strong data-i18n="resourceChildren">Детям</strong><span data-i18n="resourceChildrenText">Как выбирать задания и получать согласованные бонусы.</span></a>
+        <a class="resource-card" href="./methodology/"><strong data-i18n="resourceMethod">Методика и источники</strong><span data-i18n="resourceMethodText">Рабочие принципы, профессиональные границы и источники.</span></a>
+        <a class="resource-card" href="./safety/"><strong data-i18n="resourceSafety">Безопасность и данные</strong><span data-i18n="resourceSafetyText">Что хранит демо и почему здесь не нужна личная информация.</span></a>
+        <a class="resource-card" href="./faq/"><strong data-i18n="resourceFaq">Вопросы и ответы</strong><span data-i18n="resourceFaqText">Короткие ответы о пилоте, ролях и ограничениях.</span></a>
+      </div>
     </section>
     <section class="section contact-section" id="contact">
       <div class="contact-copy">
@@ -115,6 +151,6 @@
     <div class="brand footer-brand"><img src="./assets/mark.svg" width="38" height="38" alt=""><span>Play to Grow<small data-i18n="footerSlogan">Play to Grow · Играй, чтобы расти</small></span></div>
     <p data-i18n="footerNote">Пилотный проект. Сайт не собирает персональные данные и не является медицинской услугой.</p><a href="#top" data-i18n="toTop">Наверх ↑</a>
   </footer>
-  <noscript>Для переключения языка включите JavaScript. Основная информация о проекте доступна на этой странице.</noscript>
+  <noscript>Основная информация и ссылки на русскую и английскую версии доступны без JavaScript.</noscript>
 </body>
 </html>

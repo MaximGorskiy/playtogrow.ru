@@ -7,7 +7,7 @@ const LANG_KEY = `playtogrow:language:${location.pathname.split('/').filter(Bool
 const app = document.querySelector('#app');
 const dialog = document.querySelector('#dialog');
 const DEFAULT_LANG = document.documentElement.dataset.defaultLanguage === 'en' ? 'en' : 'ru';
-const SITE_VERSION = '20261026-4';
+const SITE_VERSION = '20261030-1';
 const REQUESTED_LANG = new URLSearchParams(location.search).get('lang');
 let lang = ['ru', 'en'].includes(REQUESTED_LANG) ? REQUESTED_LANG : localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
 if (!['ru', 'en'].includes(lang)) lang = DEFAULT_LANG;
@@ -16,6 +16,10 @@ const englishDemo = createDemo();
 const L = (ru, en) => lang === 'en' ? en : ru;
 const ENGLISH_DEMO_NAMES = new Map([['Саша', 'Sasha'], ['Анна', 'Anna'], ['Мария', 'Maria']]);
 const displayName = value => lang === 'en' ? ENGLISH_DEMO_NAMES.get(value) || value : value;
+const landingUrl = () => {
+  if (['localhost', '127.0.0.1', ''].includes(location.hostname)) return lang === 'en' ? './en/' : './';
+  return lang === 'en' ? 'https://playtogrow.online/en/' : 'https://playtogrow.ru/';
+};
 const dataText = (item, field) => lang === 'en' && item?.[`${field}En`] ? item[`${field}En`] : item?.[field] || '';
 const categoryName = id => lang === 'en' ? CATEGORIES[id].labelEn : CATEGORIES[id].label;
 const roleName = id => L(ROLES[id], { child: 'Child', parent: 'Parent', moderator: 'Moderator' }[id]);
@@ -215,13 +219,13 @@ function render() {
   const name = escape(displayName(state.profile[role]));
   const childName = escape(displayName(state.profile.child));
   app.innerHTML = `<aside class="sidebar">
-    <a class="brand" href="./index.html?lang=${lang}&v=${SITE_VERSION}"><img src="./assets/mark.svg" alt="" width="40" height="40"><span>Play to Grow<small>играй, чтобы расти.</small></span></a>
+    <a class="brand" href="${landingUrl()}"><img src="./assets/mark.svg" alt="" width="40" height="40"><span>Play to Grow<small>играй, чтобы расти.</small></span></a>
     <div class="family-label">СЕМЕЙНОЕ ПРОСТРАНСТВО</div>
     <div class="family"><span class="avatar small">${childName[0]}</span><span>Команда ${childName}<small>Задания, отчеты и награды</small></span></div>
     <nav aria-label="Основная навигация">${navigation[role].map(([id, ico, label]) => `<a href="#${role}/${id}" class="nav-link ${page === id ? 'selected' : ''}" ${page === id ? 'aria-current="page"' : ''}>${icon(ico)}<span>${label}</span>${id === 'review' && pending ? `<b class="nav-count">${pending}</b>` : ''}</a>`).join('')}</nav>
     <div class="sidebar-bottom"><div class="gentle-note">${icon('leaf')}<strong>Как получить награду</strong><p>Выбери задание, отправь отчет<br>и накопи баллы.</p></div>${button(`${icon('shield')} О демоверсии`, 'about', '', 'about-link')}<div class="sidebar-foot">Play to Grow · 2026</div></div>
   </aside>
-  <div class="workspace"><header class="topbar"><div class="breadcrumb"><a href="./index.html?lang=${lang}&v=${SITE_VERSION}">${L('Стартовая', 'Home')}</a><span>/</span><span>${roleName(role)}</span><span>/</span><b>${navigation[role].find(([id]) => id === page)?.[2]}</b></div><div class="topbar-right"><span class="demo-dot">Демо</span><div class="language-switch" aria-label="${L('Язык интерфейса', 'Interface language')}"><button type="button" data-action="language" data-id="ru" aria-pressed="${lang === 'ru'}">RU</button><button type="button" data-action="language" data-id="en" aria-pressed="${lang === 'en'}">EN</button></div><label class="role-select"><span class="sr-only">Роль участника</span><select id="role-select">${Object.keys(ROLES).map(id => `<option value="${id}" ${role === id ? 'selected' : ''}>${roleName(id)}</option>`).join('')}</select></label><span class="avatar ${role}">${name.slice(0, 1)}</span></div></header>
+  <div class="workspace"><header class="topbar"><div class="breadcrumb"><a href="${landingUrl()}">${L('Стартовая', 'Home')}</a><span>/</span><span>${roleName(role)}</span><span>/</span><b>${navigation[role].find(([id]) => id === page)?.[2]}</b></div><div class="topbar-right"><span class="demo-dot">Демо</span><div class="language-switch" aria-label="${L('Язык интерфейса', 'Interface language')}"><button type="button" data-action="language" data-id="ru" aria-pressed="${lang === 'ru'}">RU</button><button type="button" data-action="language" data-id="en" aria-pressed="${lang === 'en'}">EN</button></div><label class="role-select"><span class="sr-only">Роль участника</span><select id="role-select">${Object.keys(ROLES).map(id => `<option value="${id}" ${role === id ? 'selected' : ''}>${roleName(id)}</option>`).join('')}</select></label><span class="avatar ${role}">${name.slice(0, 1)}</span></div></header>
   <div class="demo-banner"><span>${icon('people')} Три роли, один браузер. Все данные — учебные и сохраняются на этом устройстве.</span>${button('Как попробовать', 'about', '', 'text-btn')}</div>
   ${storageError ? `<div class="error-banner" role="alert">${escape(storageError)} ${button('Восстановить', 'about', '', 'text-btn')}</div>` : ''}
   <main id="main" tabindex="-1">${page === 'day' ? dashboard(active, xp, level) : page === 'rewards' ? rewardsPage() : page === 'review' ? reviewPage() : page === 'progress' ? progressPage() : page === 'settings' ? settingsPage() : page === 'library' ? libraryPage() : page === 'concept' ? conceptPage() : teamPage()}</main>

@@ -3,7 +3,7 @@ name: Publish Play to Grow
 on:
   push:
     branches: [main, master]
-    paths: ['docs/**', 'tests/**', '.github/workflows/pages.yml']
+    paths: ['docs/**', 'tests/**', 'scripts/build_discovery.py', 'scripts/notify_indexnow.py', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
@@ -26,14 +26,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check generated discovery pages
+        run: python scripts/build_discovery.py --check
       - name: Validate demo logic
-        run: node --test tests/model.test.mjs
+        run: node --test tests/model.test.mjs tests/site.test.mjs
       - name: Check JavaScript syntax
         run: |
           node --check docs/model.js
           node --check docs/app.js
           node --check docs/contact-config.js
           node --check docs/landing.js
+          python -m py_compile scripts/build_discovery.py scripts/notify_indexnow.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true
@@ -42,3 +48,6 @@ jobs:
           path: docs
       - uses: actions/deploy-pages@v5
         id: deployment
+      - name: Notify IndexNow
+        continue-on-error: true
+        run: python scripts/notify_indexnow.py

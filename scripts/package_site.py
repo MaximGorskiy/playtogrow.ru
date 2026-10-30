@@ -1,123 +1,121 @@
-"""Package the static site and a double-clickable offline preview, without dependencies."""
-from pathlib import Path
-from zipfile import ZipFile, ZIP_DEFLATED
+"""Package GitHub Pages archives and double-clickable landing/demo previews."""
+
+from __future__ import annotations
+
 import base64
 import hashlib
+import subprocess
+import sys
+from pathlib import Path
+from zipfile import ZIP_DEFLATED, ZipFile
+
+from build_discovery import generated_outputs
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = ROOT / 'docs'
-OUTPUT = ROOT / 'release'
+SITE = ROOT / "docs"
+OUTPUT = ROOT / "release"
 OUTPUT.mkdir(exist_ok=True)
+VERSION = "20261030-1"
 
-files = [
-    'index.html', 'demo.html', 'landing.css', 'landing.js', 'contact-config.js',
-    'styles.css', 'app.js', 'model.js', '.nojekyll', 'package.json', 'assets/mark.svg',
+subprocess.run([sys.executable, str(ROOT / "scripts" / "build_discovery.py"), "--check"], check=True)
+
+support_files = [
+    ".github/workflows/pages.yml", "tests/model.test.mjs", "tests/site.test.mjs",
+    "README.md", "PROJECT_LOG.md", "scripts/build_discovery.py",
+    "scripts/notify_indexnow.py", "scripts/package_site.py", "start-preview.cmd",
 ]
-support_files = ['.github/workflows/pages.yml', 'tests/model.test.mjs', 'README.md', 'PROJECT_LOG.md', 'scripts/package_site.py', 'start-preview.cmd']
 variants = {
-    'ru': {
-        'archive': 'playtogrow-ru-github-pages.zip',
-        'preview': 'Play to Grow — RU.html',
-        'demo_preview': 'Play to Grow — RU Demo.html',
-        'html_lang': 'ru',
-        'title': 'Play to Grow — играй, чтобы расти',
-        'description': 'Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.',
-        'demo_title': 'Play to Grow — демоверсия',
-        'demo_description': 'Демонстрация Play to Grow: три роли, развивающие задания, прогресс и согласованные игровые награды.',
-        'skip': 'Перейти к содержимому',
-        'landing_noscript': 'Для переключения языка включите JavaScript. Основная информация о проекте доступна на этой странице.',
-        'demo_noscript': 'Для работы Play to Grow включите JavaScript в браузере. Данные демоверсии хранятся только на этом устройстве.',
+    "ru": {
+        "domain": "ru",
+        "archive": "playtogrow-ru-github-pages.zip",
+        "preview": "Play to Grow — RU.html",
+        "demo_preview": "Play to Grow — RU Demo.html",
+        "landing": SITE / "index.html",
+        "language": "ru",
     },
-    'en': {
-        'archive': 'playtogrow-en-github-pages.zip',
-        'preview': 'Play to Grow — EN.html',
-        'demo_preview': 'Play to Grow — EN Demo.html',
-        'html_lang': 'ru',
-        'title': 'Play to Grow — играй, чтобы расти',
-        'description': 'Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.',
-        'demo_title': 'Play to Grow — демоверсия',
-        'demo_description': 'Демонстрация Play to Grow: три роли, развивающие задания, прогресс и согласованные игровые награды.',
-        'skip': 'Перейти к содержимому',
-        'landing_noscript': 'Для переключения языка включите JavaScript. Основная информация о проекте доступна на этой странице.',
-        'demo_noscript': 'Для работы Play to Grow включите JavaScript в браузере. Данные демоверсии хранятся только на этом устройстве.',
+    "en": {
+        "domain": "online",
+        "archive": "playtogrow-en-github-pages.zip",
+        "preview": "Play to Grow — EN.html",
+        "demo_preview": "Play to Grow — EN Demo.html",
+        "landing": SITE / "en" / "index.html",
+        "language": "en",
     },
 }
 
-source_index = (SITE / 'index.html').read_text(encoding='utf-8')
-source_demo = (SITE / 'demo.html').read_text(encoding='utf-8')
 
-def localized_html(source, language, page):
-    config = variants[language]
-    html = source.replace(
-        '<html lang="ru" data-default-language="ru"',
-        f'<html lang="{config["html_lang"]}" data-default-language="{config["html_lang"]}"',
-    )
-    title = config['title'] if page == 'landing' else config['demo_title']
-    description = config['description'] if page == 'landing' else config['demo_description']
-    original_title = 'Play to Grow — играй, чтобы расти' if page == 'landing' else 'Play to Grow — демоверсия'
-    original_description = (
-        'Play to Grow — пилотный проект для семей, столкнувшихся с компьютерной или игровой зависимостью. Игра становится мотивацией для реальных шагов в развитии ребенка.'
-        if page == 'landing' else
-        'Демонстрация Play to Grow: три роли, развивающие задания, прогресс и согласованные игровые награды.'
-    )
-    html = html.replace(f'<title>{original_title}</title>', f'<title>{title}</title>')
-    html = html.replace(f'content="{original_description}"', f'content="{description}"')
-    html = html.replace('>Перейти к содержимому</a>', f'>{config["skip"]}</a>')
-    start, end = html.index('<noscript>'), html.index('</noscript>')
-    noscript = config['landing_noscript'] if page == 'landing' else config['demo_noscript']
-    return html[:start] + f'<noscript>{noscript}' + html[end:]
-
-for language, config in variants.items():
-    with ZipFile(OUTPUT / config['archive'], 'w', ZIP_DEFLATED) as archive:
-        for name in files:
-            if name == 'index.html':
-                archive.writestr('docs/index.html', localized_html(source_index, language, 'landing'))
-            elif name == 'demo.html':
-                archive.writestr('docs/demo.html', localized_html(source_demo, language, 'demo'))
+def write_archive(config: dict) -> None:
+    overrides = generated_outputs(config["domain"], metadata_only=True)
+    archive_path = OUTPUT / config["archive"]
+    with ZipFile(archive_path, "w", ZIP_DEFLATED) as archive:
+        for path in sorted(SITE.rglob("*")):
+            if not path.is_file():
+                continue
+            relative = path.relative_to(SITE)
+            override = overrides.get(relative)
+            if override is None:
+                archive.write(path, (Path("docs") / relative).as_posix())
             else:
-                archive.write(SITE / name, f'docs/{name}')
+                archive.writestr((Path("docs") / relative).as_posix(), override)
         for name in support_files:
-            archive.write(ROOT / name, name)
+            archive.write(ROOT / name, Path(name).as_posix())
+    with ZipFile(archive_path) as archive:
+        assert archive.testzip() is None
+        robots = archive.read("docs/robots.txt").decode("utf-8")
+        expected_sitemap = "playtogrow.ru" if config["domain"] == "ru" else "playtogrow.online"
+        assert f"Sitemap: https://{expected_sitemap}/sitemap.xml" in robots
+        assert "docs/demo.html" in archive.namelist()
+        assert "docs/en/index.html" in archive.namelist()
+        assert "tests/site.test.mjs" in archive.namelist()
+    print(f"Created {config['language'].upper()} GitHub Pages archive ({archive_path.stat().st_size:,} bytes)")
 
-mark = 'data:image/svg+xml;base64,' + base64.b64encode((SITE / 'assets/mark.svg').read_bytes()).decode()
 
-contact_code = (SITE / 'contact-config.js').read_text(encoding='utf-8').replace('export const CONTACTS', 'const CONTACTS')
-landing_source = (SITE / 'landing.js').read_text(encoding='utf-8').split('\n', 1)[1]
-landing_code = contact_code + '\n' + landing_source
+mark = "data:image/svg+xml;base64," + base64.b64encode((SITE / "assets" / "mark.svg").read_bytes()).decode()
+contact_code = (SITE / "contact-config.js").read_text(encoding="utf-8").replace("export const CONTACTS", "const CONTACTS")
+landing_source = (SITE / "landing.js").read_text(encoding="utf-8").split("\n", 1)[1]
+landing_code = contact_code + "\n" + landing_source
 landing_digest = base64.b64encode(hashlib.sha256(landing_code.encode()).digest()).decode()
-
-model = (SITE / 'model.js').read_text(encoding='utf-8')
-app = (SITE / 'app.js').read_text(encoding='utf-8').split('\n', 1)[1]
-demo_code = (model + '\n' + app).replace('./assets/mark.svg', mark)
+model = (SITE / "model.js").read_text(encoding="utf-8")
+app = (SITE / "app.js").read_text(encoding="utf-8").split("\n", 1)[1]
+demo_code = (model + "\n" + app).replace("./assets/mark.svg", mark)
 demo_digest = base64.b64encode(hashlib.sha256(demo_code.encode()).digest()).decode()
 
-for language, config in variants.items():
-    landing_html = localized_html(source_index, language, 'landing')
-    landing_html = landing_html.replace('data-demo-url="./demo.html"', f'data-demo-url="./{config["demo_preview"]}"')
-    landing_html = landing_html.replace('href="./assets/mark.svg"', f'href="{mark}"')
-    landing_html = landing_html.replace('src="./assets/mark.svg"', f'src="{mark}"')
-    landing_html = landing_html.replace('<link rel="stylesheet" href="./landing.css?v=20261026-4">', '<style>' + (SITE / 'landing.css').read_text(encoding='utf-8') + '</style>')
-    landing_html = landing_html.replace('<script type="module" src="./landing.js?v=20261026-4"></script>', '<script type="module">' + landing_code + '</script>')
-    landing_html = landing_html.replace("script-src 'self'", f"script-src 'sha256-{landing_digest}'")
-    preview = OUTPUT / config['preview']
-    preview.write_text(landing_html, encoding='utf-8')
 
-    demo_html = localized_html(source_demo, language, 'demo')
-    demo_html = demo_html.replace('href="./assets/mark.svg"', f'href="{mark}"')
-    demo_html = demo_html.replace('<link rel="stylesheet" href="./styles.css?v=20261026-4">', '<style>' + (SITE / 'styles.css').read_text(encoding='utf-8') + '</style>')
-    demo_html = demo_html.replace('<script type="module" src="./app.js?v=20261026-4"></script>', '<script type="module">' + demo_code + '</script>')
-    demo_html = demo_html.replace("script-src 'self'", f"script-src 'sha256-{demo_digest}'")
-    demo_preview = OUTPUT / config['demo_preview']
-    demo_preview.write_text(demo_html, encoding='utf-8')
+def offline_landing(config: dict) -> str:
+    result = config["landing"].read_text(encoding="utf-8")
+    asset_prefix = "./" if config["language"] == "ru" else "../"
+    result = result.replace(f'href="{asset_prefix}assets/mark.svg"', f'href="{mark}"')
+    result = result.replace(f'src="{asset_prefix}assets/mark.svg"', f'src="{mark}"')
+    result = result.replace(f'<link rel="stylesheet" href="{asset_prefix}landing.css?v={VERSION}">', "<style>" + (SITE / "landing.css").read_text(encoding="utf-8") + "</style>")
+    result = result.replace(f'<script type="module" src="{asset_prefix}landing.js?v={VERSION}"></script>', '<script type="module">' + landing_code + "</script>")
+    result = result.replace("script-src 'self'", f"script-src 'sha256-{landing_digest}'")
+    result = result.replace("../demo.html", f'./{config["demo_preview"]}').replace("./demo.html", f'./{config["demo_preview"]}')
+    result = result.replace('data-local-url="./"', f'data-local-url="./{config["preview"]}"', 1)
+    result = result.replace('data-local-url="./en/"', 'data-local-url="./Play to Grow — EN.html"')
+    result = result.replace('data-local-url="../"', 'data-local-url="./Play to Grow — RU.html"')
+    return result
 
-    assert './landing.js' not in landing_html and './contact-config.js' not in landing_html
-    assert './app.js' not in demo_html and './model.js' not in demo_html
-    assert f'data-default-language="{config["html_lang"]}"' in landing_html
-    with ZipFile(OUTPUT / config['archive']) as archive:
-        assert archive.testzip() is None
-        assert f'data-default-language="{config["html_lang"]}"' in archive.read('docs/index.html').decode()
-        assert f'data-default-language="{config["html_lang"]}"' in archive.read('docs/demo.html').decode()
-        assert all(name.startswith(('docs/', 'tests/', '.github/', 'scripts/')) or name in ['README.md', 'PROJECT_LOG.md', 'start-preview.cmd'] for name in archive.namelist())
-    print(f'Created {language.upper()} offline landing ({preview.stat().st_size:,} bytes)')
-    print(f'Created {language.upper()} offline demo ({demo_preview.stat().st_size:,} bytes)')
-    print(f'Created {language.upper()} GitHub Pages archive ({(OUTPUT / config["archive"]).stat().st_size:,} bytes)')
+
+def offline_demo(config: dict) -> str:
+    result = (SITE / "demo.html").read_text(encoding="utf-8")
+    if config["language"] == "en":
+        result = result.replace('data-default-language="ru"', 'data-default-language="en"')
+    result = result.replace('href="./assets/mark.svg"', f'href="{mark}"')
+    result = result.replace(f'<link rel="stylesheet" href="./styles.css?v={VERSION}">', "<style>" + (SITE / "styles.css").read_text(encoding="utf-8") + "</style>")
+    result = result.replace(f'<script type="module" src="./app.js?v={VERSION}"></script>', '<script type="module">' + demo_code + "</script>")
+    result = result.replace("script-src 'self'", f"script-src 'sha256-{demo_digest}'")
+    return result
+
+
+for config in variants.values():
+    write_archive(config)
+    landing_html = offline_landing(config)
+    demo_html = offline_demo(config)
+    preview = OUTPUT / config["preview"]
+    demo_preview = OUTPUT / config["demo_preview"]
+    preview.write_text(landing_html, encoding="utf-8", newline="\n")
+    demo_preview.write_text(demo_html, encoding="utf-8", newline="\n")
+    assert "landing.js" not in landing_html and "contact-config.js" not in landing_html
+    assert "app.js" not in demo_html and "model.js" not in demo_html
+    print(f"Created {config['language'].upper()} offline landing ({preview.stat().st_size:,} bytes)")
+    print(f"Created {config['language'].upper()} offline demo ({demo_preview.stat().st_size:,} bytes)")

@@ -1,0 +1,32 @@
+# Play to Grow
+
+> Play to Grow is a bilingual pilot project that uses a child's interest in computer games as motivation for selected useful real-life actions and family-agreed gaming rewards.
+
+Play to Grow is not a diagnostic or medical service and does not promise treatment outcomes. The public demo has three roles in one browser, uses sample data, and stores changes only in localStorage.
+
+## Canonical versions
+
+- [Русская версия](https://playtogrow.ru/)
+- [English version](https://playtogrow.online/en/)
+
+## Project information
+
+- [About Play to Grow](https://playtogrow.online/en/about/): The purpose of Play to Grow, its three participant roles, and an honest description of the pilot's current stage.
+- [How Play to Grow works](https://playtogrow.online/en/how-it-works/): The quest cycle: child choice, report, parent review, points, a gaming reward, and progress analysis with a psychologist.
+- [Play to Grow for parents](https://playtogrow.online/en/for-parents/): The parent's role in Play to Grow, how to agree on quests and gaming rewards, and when professional advice may be needed.
+- [Play to Grow for children and teenagers](https://playtogrow.online/en/for-children/): A simple explanation for a child: choose quests, show the result, earn points, and request agreed gaming bonuses.
+- [Play to Grow for psychologists](https://playtogrow.online/en/for-psychologists/): The psychologist's role in the Play to Grow pilot: professional quest selection, progress review, ethical boundaries, and collaboration.
+- [Joining the Play to Grow pilot](https://playtogrow.online/en/pilot/): Who the pilot is looking for, how first contact works, what parent funding supports, and which outcomes are not guaranteed.
+- [Play to Grow method and sources](https://playtogrow.online/en/methodology/): The working hypothesis, principles, observation criteria, and official sources on problematic gaming behavior.
+- [Safety, ethics, and data](https://playtogrow.online/en/safety/): What the Play to Grow demo stores, what not to enter, and how the public website is separated from a future protected system.
+- [Contact Play to Grow](https://playtogrow.online/en/contact/): Play to Grow contact details for parents, families, and psychologists, including what to write and what data not to send.
+- [Questions and answers](https://playtogrow.online/en/faq/): Direct answers about quests, rewards, roles, data, and participation.
+- [Project updates](https://playtogrow.online/en/updates/): Dated public changes without participant data.
+
+## Contact
+
+- Telegram: https://t.me/MaksimGorskiy
+- Email: 31415926x2@gmail.com
+- Phone: +7 920 015-63-12
+
+Last updated: 2026-10-30
